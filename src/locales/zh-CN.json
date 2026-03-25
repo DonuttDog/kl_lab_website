@@ -1,0 +1,173 @@
+{
+  "app": {
+    "brandName": "教育心理平台（占位）",
+    "documentTitleSuffix": "教育心理平台"
+  },
+  "nav": {
+    "home": "首页",
+    "assessments": "心理测评",
+    "mall": "商城",
+    "login": "登录",
+    "startAssessment": "开始测评"
+  },
+  "header": {
+    "assessmentsMenuLabel": "心理测评",
+    "mallMenuLabel": "商城",
+    "dropdownPreviewHint": "预览（Mock）",
+    "goToAssessmentList": "进入测评列表",
+    "goToCourseList": "进入课程列表"
+  },
+  "footer": {
+    "copyright": "© 占位年份 · 备案信息待填"
+  },
+  "breadcrumb": {
+    "home": "首页",
+    "assessments": "心理测评",
+    "courses": "课程"
+  },
+  "common": {
+    "backToList": "返回列表",
+    "viewDetail": "查看详情",
+    "startAssessment": "开始测评",
+    "goHome": "回首页",
+    "notFound": "未找到内容",
+    "placeholderBlock": "占位内容，待后端或文案接入。",
+    "filterLabel": "筛选",
+    "duration": "预计时长",
+    "audience": "适用人群",
+    "audienceObject": "适用对象",
+    "summary": "简介",
+    "cover": "封面"
+  },
+  "page": {
+    "home": {
+      "title": "首页",
+      "heroTitle": "面向 K12 与家庭的教育心理支持（占位）",
+      "heroSubtitle": "以专业测评与结构化课程，陪伴成长每一步。文案待产品定稿。",
+      "entryAssessmentsTitle": "心理测评",
+      "entryAssessmentsDesc": "选择适合的测评，了解心理状态与发展特点。",
+      "entryCoursesTitle": "课程",
+      "entryCoursesDesc": "浏览系统化课程内容，支持后续学习与报名。",
+      "featuresTitle": "产品特点",
+      "feature1": "专业可信：内容与流程由心理学与教育方向把关（占位）。",
+      "feature2": "路径清晰：测评与课程入口明确，减少理解成本。",
+      "feature3": "体验克制：界面聚焦任务本身，避免无关干扰。"
+    },
+    "assessmentList": {
+      "title": "心理测评",
+      "subtitle": "用搜索或下方三个条件缩小范围；卡片上的标签表示该测评在各维度上的归类（Mock）。",
+      "filterHint": "每个下拉均为独立条件，选「全部」表示不限制该维度；多个条件同时生效（取交集）。",
+      "filterThemeLabel": "内容主题",
+      "filterAudienceLabel": "适用人群",
+      "filterScenarioLabel": "使用场景",
+      "searchLabel": "搜索名称",
+      "searchPlaceholder": "输入测评名称关键词…",
+      "themeOptionAll": "全部主题",
+      "themeOptionLearning": "学习与发展（如学习风格、学习习惯）",
+      "themeOptionEmotion": "情绪与健康（如压力、情绪自评）",
+      "audienceOptionAll": "全部人群",
+      "audienceOptionK12": "K12 学生",
+      "audienceOptionTeenParent": "青少年及家长",
+      "scenarioOptionAll": "全部场景",
+      "scenarioOptionSelf": "自我了解 / 个人发展",
+      "scenarioOptionStress": "情绪与压力关注",
+      "badgesTitle": "归类标签",
+      "themeBadge": {
+        "learning": "内容主题：学习与发展",
+        "emotion": "内容主题：情绪与健康"
+      },
+      "audienceBadge": {
+        "k12": "适用人群：K12 学生",
+        "teen_parent": "适用人群：青少年及家长"
+      },
+      "scenarioBadge": {
+        "self": "使用场景：自我了解",
+        "stress": "使用场景：情绪与压力"
+      },
+      "emptyTitle": "暂无测评",
+      "emptyHint": "请放宽筛选条件、清空搜索，或返回首页。"
+    },
+    "assessmentDetail": {
+      "notFoundTitle": "测评不存在",
+      "notFoundHint": "请从列表重新选择。",
+      "introTitle": "详细介绍",
+      "metaDuration": "预计时长：{{value}}",
+      "metaAudience": "适用人群：{{value}}"
+    },
+    "assessmentAnswer": {
+      "exit": "退出",
+      "exitConfirm": "确定退出？未提交进度将不保存（占位）。",
+      "progress": "第 {{current}} / {{total}} 题",
+      "questionPlaceholder": "题干占位（真实题目由后端或内容系统按语言返回，不进 UI 字典）。",
+      "optionA": "选项 A（占位）",
+      "optionB": "选项 B（占位）",
+      "optionC": "选项 C（占位）",
+      "prev": "上一题",
+      "next": "下一题",
+      "submit": "提交",
+      "submitToast": "提交成功（Mock，待接后端）。"
+    },
+    "courseList": {
+      "title": "课程",
+      "subtitle": "浏览与筛选课程（占位说明）。",
+      "filterAudience": "适用对象",
+      "filterTopic": "主题",
+      "filterAll": "全部",
+      "audienceOptionParent": "家长",
+      "audienceOptionStudent": "学生",
+      "topicOptionFamily": "亲子",
+      "topicOptionExam": "应考心理",
+      "emptyTitle": "暂无课程",
+      "emptyHint": "请调整筛选或返回首页。"
+    },
+    "courseDetail": {
+      "notFoundTitle": "课程不存在",
+      "notFoundHint": "请从列表重新选择。",
+      "introTitle": "课程介绍",
+      "outlineTitle": "大纲（占位）",
+      "outlineItem1": "第一节：占位",
+      "outlineItem2": "第二节：占位",
+      "outlineItem3": "第三节：占位",
+      "ctaLearn": "立即学习",
+      "ctaToast": "学习入口占位（待产品与后端）。"
+    }
+  },
+  "mock": {
+    "assessment": {
+      "a1": {
+        "title": "学习风格初筛（Mock）",
+        "summary": "用于演示列表与详情文案占位，非正式量表。",
+        "duration": "约 10 分钟",
+        "audience": "K12 学生",
+        "detailBody": "本测评为演示占位：说明目的、注意事项与隐私声明等将由正式内容替换。"
+      },
+      "a2": {
+        "title": "情绪与压力自评（Mock）",
+        "summary": "帮助了解近期情绪状态，结果仅供参考。",
+        "duration": "约 15 分钟",
+        "audience": "青少年及家长",
+        "detailBody": "占位正文：正式版本将包含指导语、作答说明与结果解释入口等。"
+      }
+    },
+    "course": {
+      "c1": {
+        "title": "亲子沟通入门（Mock）",
+        "summary": "基础理念与练习，占位课程卡片。",
+        "audience": "家长",
+        "detailBody": "占位：完整课程介绍、学习价值与大纲将由内容方提供。"
+      },
+      "c2": {
+        "title": "考试焦虑应对（Mock）",
+        "summary": "策略与放松练习，占位课程卡片。",
+        "audience": "K12 学生",
+        "detailBody": "占位：详情页长文案与多媒体结构待接入。"
+      }
+    },
+    "headerPreview": {
+      "assessment1": "热门：学习风格初筛",
+      "assessment2": "热门：情绪与压力自评",
+      "course1": "推荐：亲子沟通入门",
+      "course2": "推荐：考试焦虑应对"
+    }
+  }
+}
