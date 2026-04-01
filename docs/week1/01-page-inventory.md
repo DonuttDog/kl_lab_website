@@ -1,5 +1,7 @@
 # 第一周交付：核心页面清单
 
+> 维护注记：本文件记录 **Week1 信息架构基线**。当前仓库实际实现已进入 Week2，包含更多页面与样式改造；请结合 [../week2/08-implementation-status.md](../week2/08-implementation-status.md) 一起阅读。
+
 教育心理学平台（首页 / 测评 / 课程）的页面级清单，含测评「列表 → 详情 → 作答」与课程「列表 → 详情」分支。命名与 [04-naming-glossary.md](04-naming-glossary.md) 一致。全站 **MainLayout** 顶栏结构（测评/商城下拉、登录、开始测评）见 [02-page-content-structure.md](02-page-content-structure.md)；技术选型见 [06-tech-stack.md](06-tech-stack.md)。
 
 ## 页面总表

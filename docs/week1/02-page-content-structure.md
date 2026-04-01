@@ -1,5 +1,7 @@
 # 页面内容结构文档
 
+> 维护注记：本文件描述 **Week1 页面结构基线**；当前代码已包含 Week2 扩展（如 `/profile`、`/login`、`/register`），请同时参考 [../week2/08-implementation-status.md](../week2/08-implementation-status.md)。
+
 按页面说明：**模块**、**字段/内容**、**用户动作**、**跳转目标**。页面编号见 [01-page-inventory.md](01-page-inventory.md)。
 
 ---
@@ -13,10 +15,10 @@
 | 左 | Logo | 平台名称 / Logo | 点击 | `/` |
 | 左 | 导航 · 测评 | 文案「心理测评」或「测评」；带 **下拉** | 悬停或点击展开 | 下拉内：热门/分类预览链至 `/assessments` 或 `/assessments/:id`（Mock） |
 | 左 | 导航 · 商城 | 文案「商城」（对应需求中的 **课程** 列表，见用语表） | 悬停或点击展开 | 下拉内：推荐课程预览链至 `/courses` 或 `/courses/:id` |
-| 右 | 账户 | 「登录」 | 点击 | 登录页占位或 `#`（后端未就绪） |
+| 右 | 账户 | 「登录」 | 点击 | `/login`（前端 mock 登录页） |
 | 右 | 主 CTA | 「开始测评」等 | 点击 | `/assessments` 或某套默认测评 `/assessments/:id`（产品定） |
 
-说明：与 Pixso 类似，**左侧**为多分区导航 + **可下拉预览**；**右侧**为 **登录 + 强 CTA**。第二周再定视觉（圆角、色值等）。实现选型见 [06-tech-stack.md](06-tech-stack.md)。
+说明：与 Pixso 类似，**左侧**为多分区导航 + **可下拉预览**；**右侧**为 **登录 + 强 CTA**。Week2 已完成视觉统一改造与 Tailwind 渐进落地，见 [../week2/06-styling-tech-decision.md](../week2/06-styling-tech-decision.md)。
 
 **i18n**：顶栏与各页模块的可见文案对应 [src/locales/zh-CN.json](../../src/locales/zh-CN.json) 中的 `nav.*`、`header.*`、`page.*`、`mock.*` 等 key；组件内不出现硬编码中文句子（Mock 卡片标题亦用 `mock.*` key）。
 

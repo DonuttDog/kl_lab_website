@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Button, Card, EmptyState } from '../components/ui';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { getAssessmentById } from '../mocks/assessments';
 
@@ -15,45 +16,52 @@ export function AssessmentDetailPage() {
 
   if (!item) {
     return (
-      <div className="card">
-        <h1 className="h1">{t('page.assessmentDetail.notFoundTitle')}</h1>
-        <p className="muted">{t('page.assessmentDetail.notFoundHint')}</p>
-        <Link className="btn" to="/assessments">
-          {t('common.backToList')}
-        </Link>
-      </div>
+      <EmptyState
+        title={t('page.assessmentDetail.notFoundTitle')}
+        description={t('page.assessmentDetail.notFoundHint')}
+        actionLabel={t('common.backToList')}
+        actionTo="/assessments"
+      />
     );
   }
 
   return (
-    <div className="stack">
-      <nav className="breadcrumb" aria-label="breadcrumb">
-        <Link to="/">{t('breadcrumb.home')}</Link>
+    <div className="space-y-6">
+      <nav className="flex flex-wrap items-center gap-2 text-sm text-text-muted" aria-label="breadcrumb">
+        <Link className="hover:text-text-primary" to="/">
+          {t('breadcrumb.home')}
+        </Link>
         <span aria-hidden>/</span>
-        <Link to="/assessments">{t('breadcrumb.assessments')}</Link>
+        <Link className="hover:text-text-primary" to="/assessments">
+          {t('breadcrumb.assessments')}
+        </Link>
         <span aria-hidden>/</span>
         <span>{t(item.titleKey)}</span>
       </nav>
 
       <div>
-        <h1 className="h1">{t(item.titleKey)}</h1>
-        <p className="card__meta">{t('page.assessmentDetail.metaDuration', { value: t(item.durationKey) })}</p>
-        <p className="card__meta">{t('page.assessmentDetail.metaAudience', { value: t(item.audienceKey) })}</p>
+        <h1 className="text-3xl font-bold text-text-primary">{t(item.titleKey)}</h1>
+        <p className="mt-2 text-sm text-text-muted">
+          {t('page.assessmentDetail.metaDuration', { value: t(item.durationKey) })}
+        </p>
+        <p className="text-sm text-text-muted">
+          {t('page.assessmentDetail.metaAudience', { value: t(item.audienceKey) })}
+        </p>
       </div>
 
-      <section>
-        <h2 className="h2">{t('page.assessmentDetail.introTitle')}</h2>
-        <p>{t(item.detailBodyKey)}</p>
-      </section>
+      <Card>
+        <h2 className="text-xl font-semibold text-text-primary">{t('page.assessmentDetail.introTitle')}</h2>
+        <p className="mt-3 text-sm leading-7 text-text-secondary">{t(item.detailBodyKey)}</p>
+      </Card>
 
-      <p style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-        <Link className="btn btn--primary" to={`/assessments/${item.id}/answer`}>
-          {t('common.startAssessment')}
+      <div className="mt-3 flex flex-wrap gap-2">
+        <Link to={`/assessments/${item.id}/answer`}>
+          <Button variant="primary">{t('common.startAssessment')}</Button>
         </Link>
-        <Link className="btn" to="/assessments">
-          {t('common.backToList')}
+        <Link to="/assessments">
+          <Button variant="secondary">{t('common.backToList')}</Button>
         </Link>
-      </p>
+      </div>
     </div>
   );
 }
