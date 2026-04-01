@@ -1,8 +1,10 @@
 # 低保真线框：布局与信息层级
 
+> 维护注记：本文件用于记录 Week1 低保真结构。当前视觉实现已进入 Week2（Tailwind + 组件化），请结合 [../week2/08-implementation-status.md](../week2/08-implementation-status.md) 阅读。
+
 仅表达**区块顺序与层级**，不涉及颜色、字体、圆角等第二周视觉规范。可用本文件对照设计工具中的框线图。
 
-**实现映射（低保真 → 代码）**：全站顶栏对应 [SiteHeader](../../src/components/layout/SiteHeader.tsx)；首页区块对应 [HomePage](../../src/pages/HomePage.tsx)；列表 / 详情 / 作答 / 课程页对应 `src/pages` 下同名页面；样式为临时布局见 [src/index.css](../../src/index.css)（第二周可被设计 Token 替换）。
+**实现映射（低保真 → 代码）**：全站顶栏对应 [SiteHeader](../../src/components/layout/SiteHeader.tsx)；首页区块对应 [HomePage](../../src/pages/HomePage.tsx)；列表 / 详情 / 作答 / 课程页对应 `src/pages` 下同名页面；样式已从“临时布局”升级为 Tailwind 渐进改造（见 [../week2/06-styling-tech-decision.md](../week2/06-styling-tech-decision.md)）。
 
 ---
 
@@ -25,7 +27,7 @@
 ```
 
 - **测评 ▾ / 商城 ▾**：下拉区内为简短列表或卡片预览（Mock），点击进列表或详情路由。  
-- **登录**：第一周可占位。  
+- **登录**：当前已接入 `/login`（mock）。  
 - **开始测评**：主按钮，跳转 `/assessments` 或由产品指定默认 `id`。
 
 ---

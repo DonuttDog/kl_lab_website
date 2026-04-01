@@ -1,6 +1,7 @@
 # 技术栈与工程维护说明
 
-面向：**仅前端**；后端接口后续接入。信息架构见 [01-page-inventory.md](01-page-inventory.md)，全站顶栏见 [02-page-content-structure.md](02-page-content-structure.md)。
+面向：**仅前端**；后端接口后续接入。信息架构见 [01-page-inventory.md](01-page-inventory.md)，全站顶栏见 [02-page-content-structure.md](02-page-content-structure.md)。  
+**维护说明（重要）**：本文件最初创建于 Week1，当前已按 Week2 实际代码更新；若与其他周文档冲突，以 [../week2/08-implementation-status.md](../week2/08-implementation-status.md) 为准。
 
 ---
 
@@ -29,20 +30,21 @@
 | UI | **React 18.3** | 函数组件 + Hooks。 |
 | 路由 | **react-router-dom 7.x** | 与 v6 数据路由 API 兼容；布局路由 + 作答页独立路由。 |
 | 国际化 | **i18next** + **react-i18next** | 文案集中 [src/locales/zh-CN.json](../../src/locales/zh-CN.json)；初始化 [src/i18n/index.ts](../../src/i18n/index.ts)。 |
-| 样式 | **全局 CSS** | [src/index.css](../../src/index.css)（变量 + 工具类式类名）。**未**接入 Tailwind。 |
+| 样式 | **TailwindCSS + 少量全局基础样式** | `tailwind.config.cjs` + `postcss.config.cjs` + [src/index.css](../../src/index.css)；页面样式以 Tailwind class 为主。 |
 | 顶栏下拉 | **自实现** | `SiteHeader` 内 `button` + 状态 + 悬停/点击；**未**安装 Radix / Headless UI。 |
 
 ---
 
-## 3. 计划可选、尚未接入的依赖
+## 3. 依赖现状与可选扩展
 
 | 包 / 能力 | 用途 | 状态 |
 |-----------|------|------|
-| `tailwindcss` + PostCSS | 设计 Token、快速排版 | 第二周 UI 定稿后可接 |
+| `tailwindcss` + `postcss` + `autoprefixer` | 设计 Token、快速排版、统一样式语言 | **已接入** |
+| `@tailwindcss/postcss` | Tailwind PostCSS 适配（保留） | 已安装（当前主链路未强依赖） |
 | `@radix-ui/react-dropdown-menu` 等 | 顶栏下拉可达性、焦点管理 | 按需 |
 | `@tanstack/react-query` | 接口缓存与加载态 | 接后端 API 时 |
-| `react-hook-form` + `zod` | 作答复杂校验 | 题型与规则复杂化时 |
-| ESLint + Prettier + Vitest + Testing Library | 规范与测试 | 按需接入 |
+| `react-hook-form` + `zod` | 表单与复杂校验 | 登录/注册或作答规则复杂化时 |
+| ESLint + Prettier + Vitest + Testing Library | 规范与测试 | 建议后续补齐 |
 
 具体 `package.json` 版本以锁文件为准；新增依赖时在本节「已落地」或「可选」中补一行说明职责即可。
 
@@ -52,7 +54,7 @@
 
 ### 4.1 路由与页面映射
 
-- 路由：`/`、`/assessments`、`/assessments/:id`、`/assessments/:id/answer`、`/courses`、`/courses/:id`（与 01 文档一致）。
+- 路由：`/`、`/assessments`、`/assessments/:id`、`/assessments/:id/answer`、`/courses`、`/courses/:id`、`/profile`、`/login`、`/register`。
 - **MainLayout**：含顶栏 + `Outlet` + 页脚；**作答页**单独顶层路由，无全站顶栏。
 
 ### 4.2 目录结构（当前）
@@ -62,6 +64,8 @@ src/
   app/           router
   layouts/       MainLayout
   components/layout/
+  components/ui/
+  components/assessment/
   pages/
   mocks/         Mock 数据（展示文案用 i18n key）
   locales/       zh-CN.json 及后续语言
@@ -114,7 +118,7 @@ src/
 
 | 问题 | 结论 |
 |------|------|
-| 技术栈？ | Vite 6 + React 18 + TS 5.7 + RR 7 + i18next；全局 CSS，无 Tailwind。 |
+| 技术栈？ | Vite 6 + React 18 + TS 5.7 + RR 7 + i18next + TailwindCSS（渐进改造已落地）。 |
 | 还要接什么？ | 见第 3 节「计划可选」。 |
 | 维护什么？ | 路由、布局、`src/locales/*`、`src/mocks/*`、环境变量、与 `docs/week1` 一致。 |
 
@@ -122,4 +126,4 @@ src/
 - 构建：`npm run build`（含 `tsc --noEmit`）
 - 预览：`npm run preview`
 
-第二周 UI 定稿后，可追加「设计 Token / Tailwind 或组件库」小节，并与 `index.css` 或 `tailwind.config` 交叉引用。
+Week2 的计划与实际落地对照见 [../week2/08-implementation-status.md](../week2/08-implementation-status.md)。
