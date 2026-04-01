@@ -4,10 +4,12 @@ import { SiteHeader } from '../components/layout/SiteHeader';
 
 export function MainLayout() {
   return (
-    <div className="app-shell">
+    <div className="flex min-h-screen flex-col bg-page">
       <SiteHeader />
-      <main className="app-main">
-        <Outlet />
+      <main className="flex-1">
+        <div className="mx-auto w-full max-w-content px-4 py-6 md:px-6 md:py-8">
+          <Outlet />
+        </div>
       </main>
       <SiteFooter />
     </div>

@@ -1,13 +1,15 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-type DropdownId = 'assessments' | 'mall' | null;
+type DropdownId = 'assessments' | 'mall' | 'profile' | null;
 
 export function SiteHeader() {
   const { t } = useTranslation();
   const [open, setOpen] = useState<DropdownId>(null);
+  const [isDark, setIsDark] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   const clearCloseTimer = () => {
     if (closeTimer.current) {
@@ -21,16 +23,49 @@ export function SiteHeader() {
     closeTimer.current = setTimeout(() => setOpen(null), 120);
   };
 
+  useEffect(() => {
+    const onClickOutside = (event: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        setOpen(null);
+      }
+    };
+    const onEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(null);
+      }
+    };
+    document.addEventListener('mousedown', onClickOutside);
+    document.addEventListener('keydown', onEsc);
+    return () => {
+      document.removeEventListener('mousedown', onClickOutside);
+      document.removeEventListener('keydown', onEsc);
+    };
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    setIsDark(next);
+    document.documentElement.classList.toggle('dark', next);
+  };
+
+  const linkClass =
+    'block rounded-md px-3 py-2 text-sm text-text-secondary transition hover:bg-slate-100 hover:text-text-primary';
+  const triggerClass =
+    'inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-text-secondary transition hover:bg-slate-100 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand';
+
   return (
-    <header className="site-header">
-      <div className="container site-header__inner">
-        <Link className="site-header__brand" to="/">
+    <header className="sticky top-0 z-30 border-b border-border bg-surface/95 backdrop-blur">
+      <div
+        ref={headerRef}
+        className="mx-auto flex min-h-16 w-full max-w-content items-center gap-4 px-4 md:px-6"
+      >
+        <Link className="whitespace-nowrap text-base font-semibold text-text-primary" to="/">
           {t('app.brandName')}
         </Link>
 
-        <nav className="site-header__nav" aria-label="primary">
+        <nav className="flex flex-1 items-center gap-1" aria-label="primary">
           <div
-            className="dropdown"
+            className="relative"
             onMouseEnter={() => {
               clearCloseTimer();
               setOpen('assessments');
@@ -39,24 +74,27 @@ export function SiteHeader() {
           >
             <button
               type="button"
-              className="dropdown__trigger"
+              className={triggerClass}
               aria-expanded={open === 'assessments'}
               aria-haspopup="true"
               onClick={() => setOpen((v) => (v === 'assessments' ? null : 'assessments'))}
             >
               {t('header.assessmentsMenuLabel')}
-              <span aria-hidden>▾</span>
+              <span aria-hidden>⌄</span>
             </button>
             {open === 'assessments' ? (
-              <div className="dropdown__panel" role="menu">
-                <div className="dropdown__hint">{t('header.dropdownPreviewHint')}</div>
-                <Link className="dropdown__link" to="/assessments" role="menuitem">
+              <div
+                className="absolute left-0 top-full mt-1 min-w-56 rounded-md border border-border bg-surface p-2 shadow-panel"
+                role="menu"
+              >
+                <p className="px-3 py-2 text-xs text-text-muted">{t('header.dropdownPreviewHint')}</p>
+                <Link className={linkClass} to="/assessments" role="menuitem" onClick={() => setOpen(null)}>
                   {t('header.goToAssessmentList')}
                 </Link>
-                <Link className="dropdown__link" to="/assessments/1" role="menuitem">
+                <Link className={linkClass} to="/assessments/1" role="menuitem" onClick={() => setOpen(null)}>
                   {t('mock.headerPreview.assessment1')}
                 </Link>
-                <Link className="dropdown__link" to="/assessments/2" role="menuitem">
+                <Link className={linkClass} to="/assessments/2" role="menuitem" onClick={() => setOpen(null)}>
                   {t('mock.headerPreview.assessment2')}
                 </Link>
               </div>
@@ -64,7 +102,7 @@ export function SiteHeader() {
           </div>
 
           <div
-            className="dropdown"
+            className="relative"
             onMouseEnter={() => {
               clearCloseTimer();
               setOpen('mall');
@@ -73,24 +111,27 @@ export function SiteHeader() {
           >
             <button
               type="button"
-              className="dropdown__trigger"
+              className={triggerClass}
               aria-expanded={open === 'mall'}
               aria-haspopup="true"
               onClick={() => setOpen((v) => (v === 'mall' ? null : 'mall'))}
             >
               {t('header.mallMenuLabel')}
-              <span aria-hidden>▾</span>
+              <span aria-hidden>⌄</span>
             </button>
             {open === 'mall' ? (
-              <div className="dropdown__panel" role="menu">
-                <div className="dropdown__hint">{t('header.dropdownPreviewHint')}</div>
-                <Link className="dropdown__link" to="/courses" role="menuitem">
+              <div
+                className="absolute left-0 top-full mt-1 min-w-56 rounded-md border border-border bg-surface p-2 shadow-panel"
+                role="menu"
+              >
+                <p className="px-3 py-2 text-xs text-text-muted">{t('header.dropdownPreviewHint')}</p>
+                <Link className={linkClass} to="/courses" role="menuitem" onClick={() => setOpen(null)}>
                   {t('header.goToCourseList')}
                 </Link>
-                <Link className="dropdown__link" to="/courses/1" role="menuitem">
+                <Link className={linkClass} to="/courses/1" role="menuitem" onClick={() => setOpen(null)}>
                   {t('mock.headerPreview.course1')}
                 </Link>
-                <Link className="dropdown__link" to="/courses/2" role="menuitem">
+                <Link className={linkClass} to="/courses/2" role="menuitem" onClick={() => setOpen(null)}>
                   {t('mock.headerPreview.course2')}
                 </Link>
               </div>
@@ -98,13 +139,83 @@ export function SiteHeader() {
           </div>
         </nav>
 
-        <div className="site-header__actions">
-          <button type="button" className="btn btn--ghost">
+        <div className="flex items-center gap-2">
+          <Link
+            className="hidden rounded-md px-3 py-2 text-sm text-text-secondary transition hover:bg-slate-100 hover:text-text-primary md:inline-flex"
+            to="/login"
+          >
             {t('nav.login')}
-          </button>
-          <Link className="btn btn--primary" to="/assessments">
+          </Link>
+          <Link
+            className="inline-flex items-center justify-center rounded-md bg-brand px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            to="/assessments"
+          >
             {t('nav.startAssessment')}
           </Link>
+
+          <div className="relative">
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              aria-haspopup="true"
+              aria-expanded={open === 'profile'}
+              onClick={() => setOpen((v) => (v === 'profile' ? null : 'profile'))}
+            >
+              T
+            </button>
+            {open === 'profile' ? (
+              <div className="absolute right-0 top-full z-20 mt-2 w-56 overflow-hidden rounded-md border border-border bg-surface shadow-panel">
+                <ul className="py-2 text-sm text-text-secondary">
+                  <li>
+                    <Link className={linkClass} to="/profile" onClick={() => setOpen(null)}>
+                      {t('header.userCenter')}
+                    </Link>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      className={`${linkClass} w-full text-left`}
+                      onClick={() => {
+                        window.alert(t('header.updateLogToast'));
+                        setOpen(null);
+                      }}
+                    >
+                      {t('header.updateLog')}
+                    </button>
+                  </li>
+                  <li>
+                    <a className={linkClass} href="https://pixso.cn" target="_blank" rel="noreferrer">
+                      {t('header.visitWebsite')}
+                    </a>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      className={`${linkClass} w-full text-left`}
+                      onClick={() => {
+                        toggleTheme();
+                        setOpen(null);
+                      }}
+                    >
+                      {isDark ? t('header.switchLight') : t('header.switchDark')}
+                    </button>
+                  </li>
+                  <li className="mt-1 border-t border-border pt-1">
+                    <button
+                      type="button"
+                      className="block w-full rounded-md px-3 py-2 text-left text-sm text-danger transition hover:bg-rose-50"
+                      onClick={() => {
+                        window.alert(t('header.logoutToast'));
+                        setOpen(null);
+                      }}
+                    >
+                      {t('header.logout')}
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </header>
