@@ -5,3 +5,9 @@ dist
 .env.*.local
 .DS_Store
 node_modules/.tmp
+
+# Local IDE / Cursor（不提交工作区配置）
+.cursor/
+
+# Stitch HTML 拉取（体积大、可本地再生）
+docs/week3/fetched/*.html
