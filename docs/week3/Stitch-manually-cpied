@@ -1,0 +1,567 @@
+<!-- Design System -->
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clinical Sanctuary | 专业教育心理平台</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffdbc8",
+                      "surface-container": "#edeef0",
+                      "on-tertiary-container": "#642d00",
+                      "surface-container-high": "#e7e8ea",
+                      "secondary-fixed": "#bcebf0",
+                      "primary-fixed": "#7ff4ff",
+                      "on-primary-fixed-variant": "#004f55",
+                      "secondary-fixed-dim": "#a1cfd3",
+                      "tertiary-fixed-dim": "#ffb689",
+                      "on-secondary-fixed": "#002022",
+                      "surface": "#f8f9fb",
+                      "on-primary-fixed": "#002022",
+                      "inverse-primary": "#4ed9e5",
+                      "on-secondary-fixed-variant": "#1f4d52",
+                      "outline": "#6c797b",
+                      "tertiary-container": "#ef8f4e",
+                      "primary-fixed-dim": "#4ed9e5",
+                      "primary": "#006970",
+                      "on-error": "#ffffff",
+                      "tertiary": "#96490a",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#d9dadc",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#bcebf0",
+                      "secondary": "#39656a",
+                      "surface-variant": "#e1e2e4",
+                      "on-secondary-container": "#3f6b70",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "background": "#f8f9fb",
+                      "on-background": "#191c1e",
+                      "inverse-surface": "#2e3132",
+                      "on-tertiary-fixed-variant": "#743500",
+                      "inverse-on-surface": "#f0f1f3",
+                      "primary-container": "#14b8c4",
+                      "on-surface-variant": "#3c494a",
+                      "surface-tint": "#006970",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed": "#321300",
+                      "on-primary-container": "#004348",
+                      "outline-variant": "#bbc9ca",
+                      "surface-container-highest": "#e1e2e4",
+                      "surface-bright": "#f8f9fb",
+                      "on-surface": "#191c1e",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Public Sans", "Noto Sans SC"],
+                      "body": ["Inter", "Noto Sans SC"],
+                      "label": ["Inter", "Noto Sans SC"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', 'Noto Sans SC', sans-serif; }
+        h1, h2, h3 { font-family: 'Public Sans', 'Noto Sans SC', sans-serif; }
+        .glass-header {
+            background: rgba(248, 249, 251, 0.85);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container">
+<!-- TopNavBar -->
+<nav class="docked full-width top-0 sticky z-50 bg-surface/85 dark:bg-surface-container-low/85 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,105,112,0.06)]">
+<div class="flex justify-between items-center w-full px-8 h-20 max-w-[1440px] mx-auto">
+<div class="text-xl font-semibold text-cyan-700 dark:text-cyan-400 font-['Public_Sans'] tracking-tight">Clinical Sanctuary</div>
+<div class="hidden md:flex items-center space-x-10">
+<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 transition-colors duration-300 font-['Public_Sans'] tracking-tight" href="#">Assessments</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 transition-colors duration-300 font-['Public_Sans'] tracking-tight" href="#">Courses</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 transition-colors duration-300 font-['Public_Sans'] tracking-tight" href="#">Resources</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 transition-colors duration-300 font-['Public_Sans'] tracking-tight" href="#">About</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="text-slate-600 font-medium hover:text-cyan-600 transition-all font-['Public_Sans'] tracking-tight">Sign In</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-2.5 rounded-xl font-semibold shadow-md hover:shadow-lg transition-all transform-gpu hover:-translate-y-0.5">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="max-w-[1200px] mx-auto px-6">
+<!-- Hero Section -->
+<section class="py-24 md:py-32 text-center">
+<div class="max-w-4xl mx-auto">
+<span class="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-widest text-on-secondary-container bg-secondary-container rounded-full uppercase">Professional Excellence</span>
+<h1 class="text-5xl md:text-6xl font-extrabold text-on-surface mb-8 leading-tight tracking-tight">
+                    构筑中国教育心理的<span class="text-primary italic">专业避风港</span>
+</h1>
+<p class="text-xl text-on-surface-variant leading-relaxed max-w-2xl mx-auto mb-12">
+                    融合临床精准度与人文关怀，为教育者与学习者提供基于循证医学的心理测评与专业成长课程。
+                </p>
+<div class="flex justify-center gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-4 rounded-xl font-bold shadow-lg hover:shadow-cyan-600/20 transition-all">
+                        开始专业测评
+                    </button>
+<button class="border border-outline-variant/20 bg-surface-container-lowest px-8 py-4 rounded-xl font-bold text-on-surface hover:bg-surface-bright transition-all">
+                        了解平台理念
+                    </button>
+</div>
+</div>
+</section>
+<!-- Featured Cards -->
+<section class="grid md:grid-cols-2 gap-8 mb-32">
+<!-- Card 1: Assessments -->
+<div class="group relative bg-surface-container-lowest p-10 rounded-xl border border-outline-variant/20 shadow-sm hover:shadow-[0_4px_20px_rgba(0,105,112,0.06)] transition-all duration-300">
+<div class="mb-8 overflow-hidden rounded-lg aspect-video">
+<img alt="Psychological Assessment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="a minimalist bright clinical setting with a wooden desk, focused lighting, and subtle blue accents on the walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQxSUFE2HK43WT16yus_zK4AQFcq2oOm2goh0xFQ0bfmSSRlJDlZMp2fbVO1u6CbWTKxz8_BxIOWX54EjBqG3RHjMTrm_nj6JFE_2QyDJmO27Ydn6yrkgp4kkjqKMMlqd9_TUiRankMWdFE9LgC4JR-u9E6qJ7bb017bsdxNL0f6ORCjxWnsO8FjkenRf0hr_4sEeapGs0JxQCMAOSvTyCb_HKwR9VSsCEpg1L2Gqggv-JQOeJeH0WhkCYw8OgDDQGoQLkinwQMac"/>
+</div>
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="psychology">psychology</span>
+<h3 class="text-2xl font-bold">心理测评</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                    基于全球领先的心理学常模，提供多维度的教育心理评估，协助精准定位学习障碍与潜能优势。
+                </p>
+<a class="inline-flex items-center font-bold text-primary hover:underline underline-offset-8 decoration-2 transition-all" href="#">
+                    立即预约测评
+                    <span class="material-symbols-outlined ml-2">arrow_forward</span>
+</a>
+</div>
+<!-- Card 2: Courses -->
+<div class="group relative bg-surface-container-lowest p-10 rounded-xl border border-outline-variant/20 shadow-sm hover:shadow-[0_4px_20px_rgba(0,105,112,0.06)] transition-all duration-300">
+<div class="mb-8 overflow-hidden rounded-lg aspect-video">
+<img alt="Courses" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="overhead view of a clean workspace with a high-end digital tablet showing educational graphs and a steaming cup of tea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZaQJEloRJaLaRNjbCeCjmqbNpVb0lgxu0LrjSAImUp4fSeaKxc7UNmAgMkPo1SwnsoPUQq3HYzRLuk3tgT5fLvTcaWXLLql8Yln-EW20_0s9pAs7YegD9D3DbC9B1HTUjp9ptrFWkcWEY7W7bJuyZQWNGh0EWwpHT006ymReS0yke22V7NEy9RBA4XQ03HckKheiyRzN16CwsiCpKuBd4plhLp5MlBBQBPUNnR-eWasbdb_02_G7WMUlUT16K-T8NefZYMn_J4l8"/>
+</div>
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="school">school</span>
+<h3 class="text-2xl font-bold">专业课程</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                    由国内外临床专家领衔开发的心理成长路径，旨在提升教育从业者的心理韧性与专业干预能力。
+                </p>
+<a class="inline-flex items-center font-bold text-primary hover:underline underline-offset-8 decoration-2 transition-all" href="#">
+                    探索课程目录
+                    <span class="material-symbols-outlined ml-2">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- Product Features -->
+<section class="py-24 border-t border-surface-variant/30">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-bold mb-4">产品特点</h2>
+<div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="grid md:grid-cols-3 gap-16">
+<div class="flex flex-col items-start space-y-5">
+<div class="w-14 h-14 bg-surface-container-low rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="verified_user">verified_user</span>
+</div>
+<h4 class="text-xl font-bold">临床级别精准度</h4>
+<p class="text-on-surface-variant leading-relaxed">所有工具均通过严格的信效度检验，确保测评结果的科学性与权威性。</p>
+</div>
+<div class="flex flex-col items-start space-y-5">
+<div class="w-14 h-14 bg-surface-container-low rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="privacy_tip">privacy_tip</span>
+</div>
+<h4 class="text-xl font-bold">银行级隐私保护</h4>
+<p class="text-on-surface-variant leading-relaxed">严格遵循 HIPAA 级数据安全协议，确保每一份心理档案的绝对私密与安全。</p>
+</div>
+<div class="flex flex-col items-start space-y-5">
+<div class="w-14 h-14 bg-surface-container-low rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h4 class="text-xl font-bold">个性化成长方案</h4>
+<p class="text-on-surface-variant leading-relaxed">基于 AI 的深度学习模型，为每位用户生成定制化的心理发展路径与行动建议。</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 full-width py-16 border-t border-slate-100 dark:border-slate-900">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 max-w-[1200px] mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4 font-['Inter']">Clinical Sanctuary</div>
+<p class="text-slate-500 text-sm leading-relaxed">
+                    精准心理学驱动的教育创新平台，致力于构建一个专业、安全、可信赖的心理成长空间。
+                </p>
+</div>
+<div>
+<h5 class="text-sm font-bold text-slate-900 dark:text-slate-100 mb-6 uppercase tracking-widest">Platform</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 transition-opacity duration-300 ease-in-out text-sm font-['Inter'] underline decoration-cyan-600/30 underline-offset-4" href="#">Psychological Assessment</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 transition-opacity duration-300 ease-in-out text-sm font-['Inter'] underline decoration-cyan-600/30 underline-offset-4" href="#">Clinician Training</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 transition-opacity duration-300 ease-in-out text-sm font-['Inter'] underline decoration-cyan-600/30 underline-offset-4" href="#">Institutional Solutions</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-sm font-bold text-slate-900 dark:text-slate-100 mb-6 uppercase tracking-widest">Standards</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 transition-opacity duration-300 ease-in-out text-sm font-['Inter'] underline decoration-cyan-600/30 underline-offset-4" href="#">Clinical Standards</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 transition-opacity duration-300 ease-in-out text-sm font-['Inter'] underline decoration-cyan-600/30 underline-offset-4" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 transition-opacity duration-300 ease-in-out text-sm font-['Inter'] underline decoration-cyan-600/30 underline-offset-4" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-sm font-bold text-slate-900 dark:text-slate-100 mb-6 uppercase tracking-widest">Connect</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 transition-opacity duration-300 ease-in-out text-sm font-['Inter'] underline decoration-cyan-600/30 underline-offset-4" href="#">Contact</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 transition-opacity duration-300 ease-in-out text-sm font-['Inter'] underline decoration-cyan-600/30 underline-offset-4" href="#">LinkedIn</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-cyan-600 transition-opacity duration-300 ease-in-out text-sm font-['Inter'] underline decoration-cyan-600/30 underline-offset-4" href="#">Newsletter</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto px-8 mt-16 pt-8 border-t border-slate-100 dark:border-slate-900 flex justify-between items-center text-slate-400 text-xs font-['Inter'] tracking-wide">
+<div>© 2024 Clinical Sanctuary. Precision in Psychology.</div>
+<div class="flex space-x-6">
+<span>滬ICP備2024000000號</span>
+<span>Clinical Integrity Certified</span>
+</div>
+</div>
+</footer>
+</body></html>
+
+<!-- Educational Psychology Landing Page -->
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#1f4d52",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f8f9fb",
+                        "on-primary-fixed-variant": "#004f55",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#3f6b70",
+                        "on-primary-fixed": "#002022",
+                        "on-tertiary-container": "#642d00",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#004348",
+                        "on-background": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb689",
+                        "secondary-fixed": "#bcebf0",
+                        "primary-container": "#14b8c4",
+                        "inverse-surface": "#2e3132",
+                        "on-surface-variant": "#3c494a",
+                        "secondary": "#39656a",
+                        "outline-variant": "#bbc9ca",
+                        "surface-variant": "#e1e2e4",
+                        "surface-container": "#edeef0",
+                        "surface-container-high": "#e7e8ea",
+                        "tertiary-container": "#ef8f4e",
+                        "surface-container-highest": "#e1e2e4",
+                        "surface-bright": "#f8f9fb",
+                        "tertiary-fixed": "#ffdbc8",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#321300",
+                        "tertiary": "#96490a",
+                        "primary-fixed": "#7ff4ff",
+                        "background": "#f8f9fb",
+                        "on-surface": "#191c1e",
+                        "surface-dim": "#d9dadc",
+                        "primary": "#006970",
+                        "secondary-container": "#bcebf0",
+                        "inverse-primary": "#4ed9e5",
+                        "surface-tint": "#006970",
+                        "primary-fixed-dim": "#4ed9e5",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#743500",
+                        "outline": "#6c797b",
+                        "inverse-on-surface": "#f0f1f3",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#a1cfd3",
+                        "on-secondary-fixed": "#002022"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Public Sans", "Noto Sans SC"],
+                        "body": ["Inter", "Noto Sans SC"],
+                        "label": ["Inter", "Noto Sans SC"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(248, 249, 251, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #006970 0%, #14b8c4 100%);
+        }
+        .card-hover-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover-transition:hover {
+            transform: translateY(-4px);
+            background-color: #f8f9fb;
+            box-shadow: 0 12px 30px rgba(0, 105, 112, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 glass-nav shadow-[0_4px_20px_rgba(0,105,112,0.06)] flex justify-between items-center px-8 py-4 max-w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-semibold text-[#006970] font-headline tracking-tight">Clinical Sanctuary</span>
+<div class="hidden md:flex gap-8">
+<a class="text-[#006970] font-semibold border-b-2 border-[#006970] pb-1 transition-all duration-300 ease-out" href="#">Assessments</a>
+<a class="text-slate-600 hover:text-[#006970] transition-all duration-300 ease-out" href="#">Resources</a>
+<a class="text-slate-600 hover:text-[#006970] transition-all duration-300 ease-out" href="#">My Reports</a>
+<a class="text-slate-600 hover:text-[#006970] transition-all duration-300 ease-out" href="#">Consultation</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="bg-surface-container-highest/50 border-none rounded-md pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search assessments..." type="text"/>
+</div>
+<button class="signature-gradient text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:opacity-90 transition-all scale-98 active:scale-95">Start Assessment</button>
+<img alt="Practitioner Profile" class="w-10 h-10 rounded-full border-2 border-primary-container/20 object-cover" data-alt="Professional clinical psychologist portrait with a friendly expression in a modern bright office setting, soft clinical lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtw7UoIvnrGxI3xT6zesI64xudxgON7UtltKMzZCIrfsprUPew9BwrPsiz8VNp-0qmGk0UnJjOXNaygC4pKTmkp2KDJsVcFoes6JSwfG4f53r3agxVD2HY0GzKwwl4P4bda3ov1d3wuq95iTQEXdbdIawnGULlSy6MtVUv4jGFpuDnLY7WD1sjzqqJswC37fcjJA-slSxD7EP_IoNoCHwGySJU-xPA6boxlMqP-cZs9O9IoU_ZjYcwUthLqUUMBxOHxIX-K6pqz0U"/>
+</div>
+</nav>
+<main class="pt-28 pb-20 px-8 max-w-7xl mx-auto">
+<!-- Page Header Section -->
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold font-headline text-primary tracking-tight mb-3">心理测评</h1>
+<p class="text-lg text-on-surface-variant font-light max-w-2xl">科学精准的心理评估，为成长提供客观依据</p>
+<div class="flex items-center gap-2 mt-4 text-xs font-label tracking-wider text-secondary uppercase">
+<span class="w-8 h-[1px] bg-secondary-container"></span>
+                临床级专业评估工具库
+            </div>
+</header>
+<!-- Filter Panel -->
+<section class="bg-surface-container-lowest rounded-xl p-8 mb-12 shadow-[0_4px_20px_rgba(0,105,112,0.04)] grid grid-cols-1 lg:grid-cols-4 gap-6 items-end">
+<div class="space-y-2">
+<label class="text-xs font-semibold text-on-surface-variant/70 ml-1">关键词搜索</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="w-full bg-surface-container-low border-b-2 border-transparent focus:border-primary focus:ring-0 rounded-md py-3 pl-10 pr-4 text-sm transition-all" placeholder="搜索测评名称..." type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-semibold text-on-surface-variant/70 ml-1">测评主题</label>
+<select class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary rounded-md py-3 px-4 text-sm appearance-none">
+<option>全部主题</option>
+<option>情绪调节</option>
+<option>学习能力</option>
+<option>社交发展</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-semibold text-on-surface-variant/70 ml-1">评估对象</label>
+<select class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary rounded-md py-3 px-4 text-sm">
+<option>全部人群</option>
+<option>在校学生</option>
+<option>教育工作者</option>
+<option>家长群体</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-semibold text-on-surface-variant/70 ml-1">适用场景</label>
+<select class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary rounded-md py-3 px-4 text-sm">
+<option>全部场景</option>
+<option>学校教育</option>
+<option>居家观察</option>
+<option>临床诊断</option>
+</select>
+</div>
+</section>
+<!-- Assessment Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-6 flex flex-col h-full card-hover-transition border border-transparent">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-3 py-1 rounded-full font-bold">学习能力</span>
+<span class="bg-primary-container/10 text-primary text-[10px] px-3 py-1 rounded-full font-bold">科学权威</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer hover:text-primary transition-colors">bookmark</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 font-headline">瑞文标准推理测验 (SPM)</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-6 leading-relaxed">国际公认的非文字智力测验，通过图形推理评估个体的观察力、思维能力及逻辑分析水平。</p>
+<div class="mt-auto space-y-3 mb-8">
+<div class="flex items-center gap-3 text-xs text-on-surface-variant/80">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>适用对象: 6-16岁学生</span>
+</div>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant/80">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>预计时间: 30-45分钟</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-2.5 px-4 rounded-xl border border-outline-variant/30 text-on-surface-variant text-sm font-semibold hover:bg-surface-container-low transition-colors">查看详情</button>
+<button class="py-2.5 px-4 rounded-xl signature-gradient text-white text-sm font-semibold shadow-sm hover:opacity-90 transition-all">开始测评</button>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-6 flex flex-col h-full card-hover-transition border border-transparent">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-3 py-1 rounded-full font-bold">心理健康</span>
+<span class="bg-primary-container/10 text-primary text-[10px] px-3 py-1 rounded-full font-bold">综合评估</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer hover:text-primary transition-colors">bookmark</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 font-headline">青少年心理健康诊断测验 (MHT)</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-6 leading-relaxed">全方位筛查青少年在学习、人际、情绪等八个维度的焦虑倾向，协助建立精准心理档案。</p>
+<div class="mt-auto space-y-3 mb-8">
+<div class="flex items-center gap-3 text-xs text-on-surface-variant/80">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>适用对象: 12-18岁中学生</span>
+</div>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant/80">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>预计时间: 20-25分钟</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-2.5 px-4 rounded-xl border border-outline-variant/30 text-on-surface-variant text-sm font-semibold hover:bg-surface-container-low transition-colors">查看详情</button>
+<button class="py-2.5 px-4 rounded-xl signature-gradient text-white text-sm font-semibold shadow-sm hover:opacity-90 transition-all">开始测评</button>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-6 flex flex-col h-full card-hover-transition border border-transparent">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-3 py-1 rounded-full font-bold">注意力</span>
+<span class="bg-primary-container/10 text-primary text-[10px] px-3 py-1 rounded-full font-bold">临床参考</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer hover:text-primary transition-colors">bookmark</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 font-headline">Conners父母症状问卷 (PSQ)</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-6 leading-relaxed">国际通用的ADHD辅助诊断量表，由家长协助观察记录孩子在日常生活中的行为表现。</p>
+<div class="mt-auto space-y-3 mb-8">
+<div class="flex items-center gap-3 text-xs text-on-surface-variant/80">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>适用对象: 3-17岁学生家长</span>
+</div>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant/80">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>预计时间: 10-15分钟</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-2.5 px-4 rounded-xl border border-outline-variant/30 text-on-surface-variant text-sm font-semibold hover:bg-surface-container-low transition-colors">查看详情</button>
+<button class="py-2.5 px-4 rounded-xl signature-gradient text-white text-sm font-semibold shadow-sm hover:opacity-90 transition-all">开始测评</button>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-surface-container-lowest rounded-xl p-6 flex flex-col h-full card-hover-transition border border-transparent">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-3 py-1 rounded-full font-bold">情绪识别</span>
+<span class="bg-primary-container/10 text-primary text-[10px] px-3 py-1 rounded-full font-bold">互动性强</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer hover:text-primary transition-colors">bookmark</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 font-headline">儿童焦虑性情绪障碍筛查表</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-6 leading-relaxed">SCARED量表中文修订版，科学评估躯体焦虑、恐慌及广泛性焦虑风险，及早干预。</p>
+<div class="mt-auto space-y-3 mb-8">
+<div class="flex items-center gap-3 text-xs text-on-surface-variant/80">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>适用对象: 8-16岁学生/家长</span>
+</div>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant/80">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>预计时间: 15-20分钟</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-2.5 px-4 rounded-xl border border-outline-variant/30 text-on-surface-variant text-sm font-semibold hover:bg-surface-container-low transition-colors">查看详情</button>
+<button class="py-2.5 px-4 rounded-xl signature-gradient text-white text-sm font-semibold shadow-sm hover:opacity-90 transition-all">开始测评</button>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="bg-surface-container-lowest rounded-xl p-6 flex flex-col h-full card-hover-transition border border-transparent">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-3 py-1 rounded-full font-bold">职业规划</span>
+<span class="bg-primary-container/10 text-primary text-[10px] px-3 py-1 rounded-full font-bold">霍兰德模型</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer hover:text-primary transition-colors">bookmark</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 font-headline">霍兰德职业兴趣测验 (SDS)</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-6 leading-relaxed">帮助学生了解自身职业倾向，匹配适合的学科领域与未来职业方向，指导生涯规划。</p>
+<div class="mt-auto space-y-3 mb-8">
+<div class="flex items-center gap-3 text-xs text-on-surface-variant/80">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>适用对象: 高中生及大学生</span>
+</div>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant/80">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>预计时间: 25-30分钟</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-2.5 px-4 rounded-xl border border-outline-variant/30 text-on-surface-variant text-sm font-semibold hover:bg-surface-container-low transition-colors">查看详情</button>
+<button class="py-2.5 px-4 rounded-xl signature-gradient text-white text-sm font-semibold shadow-sm hover:opacity-90 transition-all">开始测评</button>
+</div>
+</article>
+<!-- Empty/Cta Card -->
+<article class="bg-surface-container-low/50 rounded-xl p-6 flex flex-col justify-center items-center border-2 border-dashed border-outline-variant/20 group">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+</div>
+<h3 class="text-lg font-bold text-on-surface mb-2">未找到合适的测评？</h3>
+<p class="text-sm text-on-surface-variant text-center px-4 mb-6 leading-relaxed">我们的心理专家可以为您推荐更具针对性的评估方案</p>
+<button class="text-primary font-bold text-sm underline underline-offset-4 hover:opacity-80 transition-opacity">咨询专家建议</button>
+</article>
+</div>
+</main>
+<!-- Footer Section -->
+<footer class="bg-[#f2f4f6] dark:bg-slate-900 w-full mt-auto flex flex-col md:flex-row justify-between items-center px-12 py-10">
+<div class="flex flex-col gap-2 mb-6 md:mb-0">
+<span class="font-headline font-bold text-[#006970] text-lg">Clinical Sanctuary</span>
+<p class="font-body text-sm tracking-wide text-slate-500 dark:text-slate-400">© 2024 Clinical Sanctuary Educational Psychology. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-body text-sm tracking-wide text-slate-500 dark:text-slate-400 hover:text-[#14B8C4] transition-colors" href="#">Privacy Policy</a>
+<a class="font-body text-sm tracking-wide text-slate-500 dark:text-slate-400 hover:text-[#14B8C4] transition-colors" href="#">Terms of Service</a>
+<a class="font-body text-sm tracking-wide text-slate-500 dark:text-slate-400 hover:text-[#14B8C4] transition-colors" href="#">Ethical Guidelines</a>
+<a class="font-body text-sm tracking-wide text-slate-500 dark:text-slate-400 hover:text-[#14B8C4] transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+</body></html>
