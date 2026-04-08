@@ -30,6 +30,7 @@
     "copyright": "© 占位年份 · 备案信息待填"
   },
   "breadcrumb": {
+    "navAriaLabel": "面包屑导航",
     "home": "首页",
     "assessments": "心理测评",
     "courses": "课程"
@@ -51,16 +52,28 @@
   "page": {
     "home": {
       "title": "首页",
-      "heroTitle": "面向 K12 与家庭的教育心理支持（占位）",
-      "heroSubtitle": "以专业测评与结构化课程，陪伴成长每一步。文案待产品定稿。",
+      "heroBadge": "专业可信（占位）",
+      "heroTitleLead": "构筑中国教育心理的",
+      "heroTitleAccent": "专业支持",
+      "heroSubtitle": "融合专业测评与结构化课程，为家庭与学校提供可信赖的成长参考（占位文案）。",
+      "heroCtaPrimary": "开始专业测评",
+      "heroCtaSecondary": "了解平台特点",
       "entryAssessmentsTitle": "心理测评",
-      "entryAssessmentsDesc": "选择适合的测评，了解心理状态与发展特点。",
-      "entryCoursesTitle": "课程",
-      "entryCoursesDesc": "浏览系统化课程内容，支持后续学习与报名。",
+      "entryAssessmentsDesc": "基于常模与教研的多维度教育心理评估，协助了解学习与发展特点（占位）。",
+      "entryAssessmentsLink": "进入心理测评",
+      "entryCoursesTitle": "专业课程",
+      "entryCoursesDesc": "系统化心理成长与教学支持内容，支持后续学习与报名（占位）。",
+      "entryCoursesLink": "探索课程目录",
+      "entryImageAssessmentsAlt": "心理测评示意（占位图）",
+      "entryImageCoursesAlt": "课程学习示意（占位图）",
       "featuresTitle": "产品特点",
-      "feature1": "专业可信：内容与流程由心理学与教育方向把关（占位）。",
-      "feature2": "路径清晰：测评与课程入口明确，减少理解成本。",
-      "feature3": "体验克制：界面聚焦任务本身，避免无关干扰。"
+      "entriesSectionTitle": "核心入口",
+      "featureTitle1": "专业可信",
+      "featureBody1": "内容与流程由心理学与教育方向把关，强调可解释与可预期（占位）。",
+      "featureTitle2": "路径清晰",
+      "featureBody2": "测评与课程入口明确，减少理解与操作成本（占位）。",
+      "featureTitle3": "体验克制",
+      "featureBody3": "界面聚焦任务本身，避免无关干扰（占位）。"
     },
     "profile": {
       "title": "用户中心",
@@ -116,7 +129,9 @@
     },
     "assessmentList": {
       "title": "心理测评",
-      "subtitle": "用搜索或下方三个条件缩小范围；卡片上的标签表示该测评在各维度上的归类（Mock）。",
+      "introKicker": "临床级专业评估工具库（占位）",
+      "filtersSectionTitle": "搜索与筛选",
+      "subtitle": "科学精准的心理评估，为成长提供客观参考（占位）。",
       "filterHint": "每个下拉均为独立条件，选「全部」表示不限制该维度；多个条件同时生效（取交集）。",
       "filterThemeLabel": "内容主题",
       "filterAudienceLabel": "适用人群",
@@ -146,7 +161,8 @@
         "stress": "使用场景：情绪与压力"
       },
       "emptyTitle": "暂无测评",
-      "emptyHint": "请放宽筛选条件、清空搜索，或返回首页。"
+      "emptyHint": "请放宽筛选条件、清空搜索，或返回首页。",
+      "clearFilters": "清除筛选"
     },
     "assessmentDetail": {
       "notFoundTitle": "测评不存在",
@@ -174,7 +190,9 @@
     },
     "courseList": {
       "title": "课程",
-      "subtitle": "浏览与筛选课程（占位说明）。",
+      "introKicker": "系统化学习内容（占位）",
+      "filtersSectionTitle": "搜索与筛选",
+      "subtitle": "浏览与筛选课程，后续可接入报名与学习进度（占位）。",
       "searchLabel": "搜索名称",
       "searchPlaceholder": "输入课程名称关键词…",
       "filterAudience": "适用对象",
@@ -185,7 +203,8 @@
       "topicOptionFamily": "亲子",
       "topicOptionExam": "应考心理",
       "emptyTitle": "暂无课程",
-      "emptyHint": "请调整筛选或返回首页。"
+      "emptyHint": "请调整筛选或返回首页。",
+      "clearFilters": "清除筛选"
     },
     "courseDetail": {
       "notFoundTitle": "课程不存在",

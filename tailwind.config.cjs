@@ -17,6 +17,10 @@ module.exports = {
           DEFAULT: '#14B8C4',
           hover: '#0EA5B4',
         },
+        /** Stitch 对齐：深青主色、次要色、浅底（与 Week2 并存） */
+        brandInk: '#006970',
+        brandSecondary: '#39656a',
+        surfaceMuted: '#f2f4f6',
         success: '#16A34A',
         warning: '#D97706',
         danger: '#DC2626',
@@ -32,6 +36,9 @@ module.exports = {
       },
       maxWidth: {
         content: '1200px',
+      },
+      backgroundImage: {
+        'signature-gradient': 'linear-gradient(135deg, #006970 0%, #14b8c4 100%)',
       },
       fontFamily: {
         sans: ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],

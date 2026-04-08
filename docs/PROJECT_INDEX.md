@@ -14,6 +14,7 @@
 | 3 | [week2/08-implementation-status.md](week2/08-implementation-status.md) | 当前实现状态（计划→代码对照，建议优先） |
 | 4 | [week1/06-tech-stack.md](week1/06-tech-stack.md) | 技术栈与工程维护（已按 Week2 同步） |
 | 5 | 当周文件夹 `docs/weekN/` | 该周产品/流程/文案的详细说明 |
+| 6 | [week3/README.md](week3/README.md) | Week3：Stitch 沟通留痕、首页与两列表页第一版改版 |
 
 ---
 
@@ -29,10 +30,15 @@
 | 依赖、构建命令、维护项 | [week1/06-tech-stack.md](week1/06-tech-stack.md)、[week2/06-styling-tech-decision.md](week2/06-styling-tech-decision.md) |
 | Week2 全站 UI/UX 统一规范 | [week2/README.md](week2/README.md) |
 | Week2 计划与实现对照 | [week2/08-implementation-status.md](week2/08-implementation-status.md) |
+| Week3 Stitch 与三页改版 | [week3/README.md](week3/README.md)、[week3/01-stitch-prompts-and-results.md](week3/01-stitch-prompts-and-results.md) |
 | 路由与布局代码 | `src/app/router.tsx`、`src/layouts/MainLayout.tsx` |
-| 全站顶栏 / 页脚 | `src/components/layout/SiteHeader.tsx`、`SiteFooter.tsx` |
+| 全站顶栏 / 页脚 | `src/components/layout/SiteHeader.tsx`、`SiteFooter.tsx`（顶栏：路由高亮、`aria-current`、渐变主 CTA；见 [week3/02-week3-implementation-notes.md](week3/02-week3-implementation-notes.md) 中「Stitch 演示对齐（第二轮）」） |
+| 面包屑（列表/详情） | `src/components/layout/PageBreadcrumb.tsx` |
+| 列表卡片元信息行 | `src/components/ui/MetaRow.tsx` |
 | 界面中文文案（key） | `src/locales/zh-CN.json` |
 | Mock 测评/课程数据 | `src/mocks/assessments.ts`、`src/mocks/courses.ts` |
+| Stitch 拉取 HTML 摘要 | `docs/week3/fetched/stitch-fetch-summary.json`（运行 `npm run stitch:fetch` 生成） |
+| 单元 / 冒烟测试 | `npm run test`（Vitest）；`src/pages/__tests__/smoke.test.tsx`、`src/components/layout/__tests__/SiteHeader.test.tsx` |
 | 环境变量占位 | [.env.example](../.env.example) |
 
 ---
@@ -52,7 +58,8 @@
 ├── docs/
 │   ├── PROJECT_INDEX.md      # 本文件：总索引 + 按周记录
 │   ├── week1/                # 第一周产品与技术文档（01–06）
-│   └── week2/                # 第二周 UI/UX 文档（01–08）
+│   ├── week2/                # 第二周 UI/UX 文档（01–08）
+│   └── week3/                # 第三周 Stitch 留痕与首页/列表页改版说明
 └── src/
     ├── main.tsx              # 入口；加载 i18n 与样式
     ├── App.tsx               # RouterProvider
@@ -60,8 +67,8 @@
     ├── i18n/                 # i18next 初始化
     ├── locales/zh-CN.json    # 中文文案（集中字典）
     ├── layouts/              # MainLayout
-    ├── components/layout/    # SiteHeader、SiteFooter
-    ├── components/ui/        # Button/Card/Input/Select/EmptyState/Toast
+    ├── components/layout/    # SiteHeader、SiteFooter、PageIntro、PageBreadcrumb
+    ├── components/ui/        # Button/Card/Input/Select/EmptyState/Toast/MetaRow
     ├── components/assessment/# AssessmentScale（X 分量表）
     ├── pages/                # 各路由页面
     ├── mocks/                # Mock 数据（引用 locale key）
@@ -89,6 +96,13 @@
 - **详细文档**：`docs/week2/` 下 `README + 01~08`。
 - **实现对照**：见 [week2/08-implementation-status.md](week2/08-implementation-status.md)。
 - **已知边界**：深色模式仅完成开关入口，尚未完成全量 dark 样式适配；登录/注册仍为 mock 流程。
+
+### Week 3（已落地）
+
+- **范围**：按《网站需求文档》与 Week2 规范，完成**首页、心理测评列表、课程列表**第一版统一视觉；用 `@google/stitch-sdk` 脚本记录与 Stitch 的提示词沟通（生成画面接口若失败见 `docs/week3` 说明）。第二轮对齐：顶栏模块高亮与渐变 CTA、列表 `MetaRow` 图标、列表/详情面包屑、筛选空状态「清除筛选」、`prefers-reduced-motion` 下禁用卡片 hover 位移。
+- **详细文档**：`docs/week3/` 下 `README`、`01-stitch-prompts-and-results`、`02-week3-implementation-notes`（含「Stitch 演示对齐第二轮」）。
+- **脚本**：`scripts/stitch-week3-reference.mjs`、`scripts/fetch-stitch-project.mjs`（需 `.env` 中 `STITCH_API_KEY`）；`npm run stitch:fetch` 拉取指定项目各屏 HTML。
+- **测试**：`npm run test`（首页 / 列表冒烟 + `SiteHeader` 路由与样式断言）。
 
 ---
 

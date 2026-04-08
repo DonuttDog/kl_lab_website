@@ -1,7 +1,7 @@
 # 技术栈与工程维护说明
 
 面向：**仅前端**；后端接口后续接入。信息架构见 [01-page-inventory.md](01-page-inventory.md)，全站顶栏见 [02-page-content-structure.md](02-page-content-structure.md)。  
-**维护说明（重要）**：本文件最初创建于 Week1，当前已按 Week2 实际代码更新；若与其他周文档冲突，以 [../week2/08-implementation-status.md](../week2/08-implementation-status.md) 为准。
+**维护说明（重要）**：本文件最初创建于 Week1，当前已按 Week2 实际代码更新；若与其他周文档冲突，以 [../week2/08-implementation-status.md](../week2/08-implementation-status.md) 为准。**Week3 起**外观与顶栏/列表等迭代另见 [../week3/02-week3-implementation-notes.md](../week3/02-week3-implementation-notes.md) 与 [../PROJECT_INDEX.md](../PROJECT_INDEX.md)。
 
 ---
 
@@ -44,7 +44,8 @@
 | `@radix-ui/react-dropdown-menu` 等 | 顶栏下拉可达性、焦点管理 | 按需 |
 | `@tanstack/react-query` | 接口缓存与加载态 | 接后端 API 时 |
 | `react-hook-form` + `zod` | 表单与复杂校验 | 登录/注册或作答规则复杂化时 |
-| ESLint + Prettier + Vitest + Testing Library | 规范与测试 | 建议后续补齐 |
+| Vitest + `@testing-library/react` + `@testing-library/jest-dom` | 单元/冒烟测试 | **已接入**：`npm run test`，配置见 `vite.config.ts`、`src/test/setup.ts` |
+| ESLint + Prettier | 规范与格式化 | 按需引入 |
 
 具体 `package.json` 版本以锁文件为准；新增依赖时在本节「已落地」或「可选」中补一行说明职责即可。
 
@@ -124,6 +125,7 @@ src/
 
 - 开发：`npm run dev`
 - 构建：`npm run build`（含 `tsc --noEmit`）
+- 测试：`npm run test`（Vitest）；页面冒烟见 `src/pages/__tests__/smoke.test.tsx`，顶栏见 `src/components/layout/__tests__/SiteHeader.test.tsx`
 - 预览：`npm run preview`
 
-Week2 的计划与实际落地对照见 [../week2/08-implementation-status.md](../week2/08-implementation-status.md)。
+Week2 的计划与实际落地对照见 [../week2/08-implementation-status.md](../week2/08-implementation-status.md)。Week3 见 [../week3/02-week3-implementation-notes.md](../week3/02-week3-implementation-notes.md)。

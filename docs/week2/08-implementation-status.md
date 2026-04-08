@@ -11,6 +11,7 @@
 - Week2 主目标已完成：全站 UI/UX 统一改造 + 新增“我的”页面 + 测评作答页量表化 + 课程页搜索补齐。
 - 样式路线已落地为 Tailwind 渐进改造（保留少量全局基础样式）。
 - 当前仓库可正常 `npm run build`。
+- **Week3 已在后续迭代落地**（首页/两列表 Stitch 向改版、顶栏与列表第二轮对齐等），**不以本文件为 Week3 对照表**；请见 [../week3/02-week3-implementation-notes.md](../week3/02-week3-implementation-notes.md) 与 [../PROJECT_INDEX.md](../PROJECT_INDEX.md)。
 
 ---
 
@@ -55,8 +56,11 @@
 
 ---
 
-## 建议的 Week3 起点
+## 后续迭代建议（Week3 Stitch 向工作已另文记录）
 
-1. 先做深色主题 token 与关键页面适配（首页/列表/详情/我的）。
-2. 定义最小 auth 状态管理（本地 mock store -> 后端接口可替换）。
+Week3 相关范围与代码说明见 `docs/week3/`。以下为仍开放的增强方向，可与产品排期：
+
+1. 深色主题 token 与关键页面全量 `dark` 适配（首页/列表/详情/我的）。
+2. 定义最小 auth 状态管理（本地 mock store → 后端接口可替换）。
 3. 把“动作区间距规范（如 `mt-3`）”收敛为可复用布局组件，减少未来样式漂移。
+4. 顶栏下拉键盘方向键导航等可达性增强（Week2 已知项延续）。

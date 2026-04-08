@@ -49,3 +49,7 @@
 - 深色模式目前仅完成“状态切换入口”，未完成整站 `dark` 视觉 token 全量适配。
 - 登录/注册为纯 mock 流程：仅前端校验与跳转，不涉及后端鉴权和会话持久化。
 
+## 与 Week3 的关系
+
+Week3 在 Week2 全站规范之上完成 **Stitch 向**首页与两列表第一版统一，以及**第二轮**顶栏模块高亮、列表卡片元信息图标、面包屑、筛选空状态等补强；说明见 [../week3/README.md](../week3/README.md) 与 [../week3/02-week3-implementation-notes.md](../week3/02-week3-implementation-notes.md)。
+

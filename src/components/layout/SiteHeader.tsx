@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { buttonStyleClasses } from '../ui/Button';
+import { cn } from '../ui/utils';
 
 type DropdownId = 'assessments' | 'mall' | 'profile' | null;
 
 export function SiteHeader() {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const assessmentsActive = pathname.startsWith('/assessments');
+  const coursesActive = pathname.startsWith('/courses');
   const [open, setOpen] = useState<DropdownId>(null);
   const [isDark, setIsDark] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -50,11 +55,17 @@ export function SiteHeader() {
 
   const linkClass =
     'block rounded-md px-3 py-2 text-sm text-text-secondary transition hover:bg-slate-100 hover:text-text-primary';
-  const triggerClass =
-    'inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-text-secondary transition hover:bg-slate-100 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand';
+
+  const navTriggerClass = (active: boolean) =>
+    cn(
+      'inline-flex items-center gap-1 rounded-md border-b-2 px-3 py-2 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand',
+      active
+        ? 'border-brandInk font-semibold text-brandInk hover:bg-slate-50'
+        : 'border-transparent text-text-secondary hover:bg-slate-100 hover:text-text-primary',
+    );
 
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-surface/95 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-border bg-surface/90 shadow-[0_4px_20px_rgba(0,105,112,0.06)] backdrop-blur-md">
       <div
         ref={headerRef}
         className="mx-auto flex min-h-16 w-full max-w-content items-center gap-4 px-4 md:px-6"
@@ -63,7 +74,10 @@ export function SiteHeader() {
           {t('app.brandName')}
         </Link>
 
-        <nav className="flex flex-1 items-center gap-1" aria-label="primary">
+        <nav
+          className="flex min-h-10 flex-1 items-center gap-1 overflow-x-auto overflow-y-hidden md:overflow-visible"
+          aria-label="primary"
+        >
           <div
             className="relative"
             onMouseEnter={() => {
@@ -74,9 +88,10 @@ export function SiteHeader() {
           >
             <button
               type="button"
-              className={triggerClass}
+              className={navTriggerClass(assessmentsActive)}
               aria-expanded={open === 'assessments'}
               aria-haspopup="true"
+              aria-current={assessmentsActive ? 'page' : undefined}
               onClick={() => setOpen((v) => (v === 'assessments' ? null : 'assessments'))}
             >
               {t('header.assessmentsMenuLabel')}
@@ -111,9 +126,10 @@ export function SiteHeader() {
           >
             <button
               type="button"
-              className={triggerClass}
+              className={navTriggerClass(coursesActive)}
               aria-expanded={open === 'mall'}
               aria-haspopup="true"
+              aria-current={coursesActive ? 'page' : undefined}
               onClick={() => setOpen((v) => (v === 'mall' ? null : 'mall'))}
             >
               {t('header.mallMenuLabel')}
@@ -147,8 +163,12 @@ export function SiteHeader() {
             {t('nav.login')}
           </Link>
           <Link
-            className="inline-flex items-center justify-center rounded-md bg-brand px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
             to="/assessments"
+            className={buttonStyleClasses(
+              'gradient',
+              'md',
+              'rounded-xl font-semibold shadow-sm hover:opacity-90 focus-visible:ring-2 focus-visible:ring-brand',
+            )}
           >
             {t('nav.startAssessment')}
           </Link>
@@ -156,7 +176,7 @@ export function SiteHeader() {
           <div className="relative">
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-signature-gradient text-sm font-semibold text-white ring-2 ring-brand/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
               aria-haspopup="true"
               aria-expanded={open === 'profile'}
               onClick={() => setOpen((v) => (v === 'profile' ? null : 'profile'))}

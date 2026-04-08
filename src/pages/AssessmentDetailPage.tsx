@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { PageBreadcrumb } from '../components/layout/PageBreadcrumb';
 import { Button, Card, EmptyState } from '../components/ui';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { getAssessmentById } from '../mocks/assessments';
@@ -27,17 +28,13 @@ export function AssessmentDetailPage() {
 
   return (
     <div className="space-y-6">
-      <nav className="flex flex-wrap items-center gap-2 text-sm text-text-muted" aria-label="breadcrumb">
-        <Link className="hover:text-text-primary" to="/">
-          {t('breadcrumb.home')}
-        </Link>
-        <span aria-hidden>/</span>
-        <Link className="hover:text-text-primary" to="/assessments">
-          {t('breadcrumb.assessments')}
-        </Link>
-        <span aria-hidden>/</span>
-        <span>{t(item.titleKey)}</span>
-      </nav>
+      <PageBreadcrumb
+        items={[
+          { label: t('breadcrumb.home'), to: '/' },
+          { label: t('breadcrumb.assessments'), to: '/assessments' },
+          { label: t(item.titleKey) },
+        ]}
+      />
 
       <div>
         <h1 className="text-3xl font-bold text-text-primary">{t(item.titleKey)}</h1>

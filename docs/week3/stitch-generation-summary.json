@@ -1,0 +1,27 @@
+{
+  "tool": "@google/stitch-sdk (see scripts/stitch-week3-reference.mjs)",
+  "generatedAt": "2026-04-08",
+  "note": "create_project succeeded; generate_screen_from_text failed with StitchError (incomplete API response). Prompts below are the exact strings sent to Stitch.",
+  "createProjectExample": {
+    "name": "projects/5272652329257752866",
+    "title": "KL Lab Week3 reference 2026-04-08"
+  },
+  "screensRequested": [
+    {
+      "key": "home",
+      "device": "DESKTOP",
+      "prompt": "Desktop web page for an educational psychology platform (China, Chinese UI).\nProfessional, minimal, trustworthy; not playful. Brand primary color #14B8C4 (teal), page background #F7F8FA, white cards, subtle borders.\nLayout: top area is NOT needed (site chrome is separate). Content: large hero with H1 + short subtitle; two equal prominent cards linking to \"心理测评\" and \"课程\"; then a 3-column \"产品特点\" section with short text. Max width ~1200px feel, generous whitespace."
+    },
+    {
+      "key": "assessmentList",
+      "device": "DESKTOP",
+      "prompt": "Desktop web page section: \"心理测评\" list for an educational psychology platform.\nSame visual system: #F7F8FA background, white cards, #14B8C4 accents, restrained typography.\nInclude: page title + short subtitle + hint line; a filter panel with search field and three dropdowns (主题/对象/场景); below, a responsive grid of assessment cards. Each card shows: title, 2-3 small tags, summary text, audience line, duration line, two buttons (查看详情 / 开始测评)."
+    },
+    {
+      "key": "courseList",
+      "device": "DESKTOP",
+      "prompt": "Desktop web page section: \"课程\" list for an educational psychology platform.\nSame visual system as above.\nInclude: title + subtitle; filter panel with search + two dropdowns (audience/topic); grid of course cards with cover placeholder area on top, title, summary, audience line, primary button (查看详情)."
+    }
+  ],
+  "generateError": "StitchError: Incomplete API response from generate_screen_from_text: expected object at projection path"
+}
