@@ -13,6 +13,8 @@
 
 **项目总索引（结构、每周进度、该去哪找资料）**：见 **[`docs/PROJECT_INDEX.md`](docs/PROJECT_INDEX.md)**，建议在开新需求或让新同学接手时先看该文件。
 
+**项目目前网址**：https://kllabwebsite-production.up.railway.app/
+
 ---
 
 ## 我需要先装什么？
