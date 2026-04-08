@@ -24,7 +24,12 @@
     "logoutToast": "当前为演示环境，暂无真实登录会话。",
     "dropdownPreviewHint": "预览（Mock）",
     "goToAssessmentList": "进入测评列表",
-    "goToCourseList": "进入课程列表"
+    "goToCourseList": "进入课程列表",
+    "mobileNavAriaLabel": "站点主导航菜单",
+    "mobileMenuOpen": "打开菜单",
+    "mobileMenuClose": "关闭菜单",
+    "navSectionAssessments": "心理测评",
+    "navSectionMall": "商城"
   },
   "footer": {
     "copyright": "© 占位年份 · 备案信息待填"
