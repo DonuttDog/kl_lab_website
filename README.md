@@ -1,94 +1,166 @@
 # KL Lab 网站（前端）
 
-## 这是做什么的？
+教育心理学平台的 **Web 前端**：在浏览器中浏览首页、心理测评、课程与用户中心；数据以本地 **Mock** 为主，无需后端即可开发与预览。
 
-本项目是 **教育心理方向网站** 的 **网页前端**（用户能在浏览器里看到和点击的那一层）。当前仓库已完成 **Week1 + Week2 + Week3** 迭代：支持浏览**首页**、**心理测评**（列表、详情、模拟作答）、**课程**（列表、详情）、**用户中心（我的）**，并提供 **登录/注册 mock 页面**；Week3 在 Week2 规范上做了 **Stitch 向视觉统一**（首页与两列表等），并另有 **第二轮**补强：顶栏模块高亮、列表卡片元信息图标、面包屑、筛选空状态「清除筛选」、动效可访问性等。文案为中文，数据以 **演示占位内容** 为主。
+**当前生产预览**（仓库外托管）：https://kllabwebsite-production.up.railway.app/  
+> 仓库内 **无** Railway / CI / Docker 配置文件；部署步骤 **TODO：待运维文档确认**。
 
-**不在本仓库里、以后会由其他人提供的部分**：真正的服务器、用户账号与登录、测评题目与结果保存、付费等。这些接好后，本网站会改成从服务器取数据；现在本地运行即可看到页面结构与流程。
-
-更细的产品说明写在 `docs/week1/`、`docs/week2/` 与 `docs/week3/` 下：  
-- `week1`：信息结构与流程基线  
-- `week2`：UI/UX 规范与实际落地状态（含计划→实现对照）  
-- `week3`：Stitch 沟通留痕、首页/列表视觉迭代与第二轮演示对齐说明
-
-**项目总索引（结构、每周进度、该去哪找资料）**：见 **[`docs/PROJECT_INDEX.md`](docs/PROJECT_INDEX.md)**，建议在开新需求或让新同学接手时先看该文件。
-
-**项目目前网址**：https://kllabwebsite-production.up.railway.app/
+**完整文档入口**：[docs/INDEX.md](docs/INDEX.md)
 
 ---
 
-## 我需要先装什么？
+## 项目概览
 
-在自己电脑上运行本项目，需要先安装：
+| 模块 | 说明 |
+|------|------|
+| 首页 | 平台介绍、测评/课程入口、产品特点（`#product-features`） |
+| 心理测评 | 列表（搜索 + 筛选）、详情、独立作答页 |
+| 课程 | 列表（搜索 + 筛选）、详情 |
+| 账户 | Mock 登录/注册；用户中心占位资料 |
 
-1. **Node.js**（官网：https://nodejs.org/ ，建议选 **长期支持 LTS** 版本；版本过旧可能导致安装失败。）
-2. 安装 Node.js 时一般会附带 **npm**（用来按清单下载项目依赖，无需单独安装）。
+不在本仓库：真实 API、会话持久化、测评结果云端存储与付费。详见 [docs/01-project-overview.md](docs/01-project-overview.md)。
 
-装好后，打开终端（Windows 上可用 PowerShell 或「命令提示符」），输入下面命令，若能看到版本号即表示可用：
+---
+
+## 技术栈
+
+- **Vite 6** + **React 18** + **TypeScript**
+- **react-router-dom 7**（`createBrowserRouter`）
+- **i18next**（当前仅 `zh-CN`）
+- **Tailwind CSS 3** + 少量全局样式
+
+细节：[docs/03-tech-stack.md](docs/03-tech-stack.md)
+
+---
+
+## 环境要求
+
+- [Node.js](https://nodejs.org/) **LTS**（推荐）
+- **npm**（随 Node 安装）
 
 ```bash
 node -v
 npm -v
 ```
 
+`package.json` 未声明 `engines`，故不写死具体 Node 小版本。
+
 ---
 
-## 如何把项目跑起来？（三步）
+## 安装
 
-以下命令均在 **项目根目录**（包含 `package.json` 的那一层）里执行。若代码是从 Git 克隆的，请先 `cd` 进入该文件夹。
-
-### 1. 安装依赖（只需第一次，或依赖有更新时再执行）
+在仓库根目录（含 `package.json`）：
 
 ```bash
 npm install
 ```
 
-过程需要联网，可能等待一两分钟，属正常现象。
+---
 
-### 2. 启动本地预览（开发模式）
+## 环境变量
+
+参考 [.env.example](.env.example)：
+
+| 变量 | 开发 `npm run dev` | 说明 |
+|------|-------------------|------|
+| `VITE_API_BASE_URL` | 不需要 | 预留，后端接入 |
+| `VITE_USE_MOCK` | 不需要 | 预留 |
+| `VITE_DEFAULT_LOCALE` | 不需要 | 预留；代码现仅加载 `zh-CN` |
+| `STITCH_API_KEY` | 不需要 | 仅 `npm run stitch:*` 需要 |
+
+本地开发通常 **无需** 创建 `.env`。
+
+---
+
+## 开发命令
 
 ```bash
 npm run dev
 ```
 
-终端里会显示一个本地地址（通常是 **http://127.0.0.1:5173** 或类似）。用浏览器打开该地址，即可看到网站。
+终端会显示本地地址（多为 http://127.0.0.1:5173）。`Ctrl+C` 停止。
 
-按 `Ctrl + C` 可停止本地服务。
+---
 
-### 3.（可选）生成正式部署用的网页包
-
-给将来放到服务器或静态托管用时：
+## 构建与预览
 
 ```bash
-npm run build
-```
-
-生成结果在 **`dist/`** 文件夹。本地想检查打包后的效果可执行：
-
-```bash
-npm run preview
+npm run build    # tsc 类型检查 + vite build → dist/
+npm run preview  # 本地预览 dist/
 ```
 
 ---
 
-## 常用命令一览（与 `package.json` 一致）
+## 测试
+
+```bash
+npm run test         # Vitest 单次
+npm run test:watch   # 监听模式
+```
+
+覆盖：首页/列表冒烟、`SiteHeader` 导航断言。见 [docs/04-routes-and-pages.md](docs/04-routes-and-pages.md)。
+
+---
+
+## 其他脚本（可选）
 
 | 命令 | 作用 |
 |------|------|
-| `npm install` | 安装/更新依赖（见上一节） |
-| `npm run dev` | 本地开发预览，改代码后一般会自动刷新页面 |
-| `npm run build` | 类型检查并打包，产出 `dist/` |
-| `npm run test` | 运行单元/冒烟测试（Vitest） |
-| `npm run preview` | 本地预览打包后的效果 |
+| `npm run stitch:fetch` | 从 Stitch 项目拉取 HTML 到 `docs/stitch/fetched/` |
+| `npm run stitch:week3` | 生成 Week3 参考屏 JSON（归档目录） |
+
+需 `.env` 中配置 `STITCH_API_KEY`。见 [docs/09-stitch-and-design-reference.md](docs/09-stitch-and-design-reference.md)。
 
 ---
 
-## 其他说明
+## 目录结构
 
-- **环境变量**：仓库根目录有 **`.env.example`**，列出将来接后端时可能用到的变量名；当前不配置也可运行。
-- **详细技术说明**：  
-  - 历史基线：`docs/week1/06-tech-stack.md`  
-  - 当前落地（建议优先看）：`docs/week2/06-styling-tech-decision.md` 与 `docs/week2/08-implementation-status.md`  
-  - Week3 实现与 Stitch 对齐：`docs/week3/02-week3-implementation-notes.md`
+```
+kl-lab-website/
+├── README.md
+├── package.json
+├── vite.config.ts
+├── tailwind.config.cjs
+├── .env.example
+├── scripts/                 # Stitch 相关
+├── docs/
+│   ├── INDEX.md             # 文档总索引
+│   ├── 01-09 *.md           # 当前规范文档
+│   ├── 网站需求文档(Week1-2).md
+│   ├── archive/             # 历史 week1/2/3 文档
+│   └── stitch/fetched/      # Stitch 拉取产物
+└── src/
+    ├── main.tsx, App.tsx
+    ├── app/router.tsx
+    ├── i18n/, locales/zh-CN.json
+    ├── layouts/, components/, pages/
+    ├── mocks/, hooks/, test/
+```
 
-如有无法安装 Node、命令报错等情况，把终端里的**完整报错文字**截图或复制给技术同事即可。
+---
+
+## 常用工作流
+
+1. **改页面**：`src/pages/` + [docs/04-routes-and-pages.md](docs/04-routes-and-pages.md)
+2. **改中文文案**：`src/locales/zh-CN.json`（勿在组件硬编码）— [docs/06-internationalization.md](docs/06-internationalization.md)
+3. **改 Mock 数据**：`src/mocks/` — [docs/07-mock-data.md](docs/07-mock-data.md)
+4. **查实现状态**：[docs/08-implementation-status.md](docs/08-implementation-status.md)
+5. **发版前**：`npm run build` && `npm run test`
+
+---
+
+## 排错
+
+| 问题 | 建议 |
+|------|------|
+| 找不到 `node` / `npm` | 安装 Node LTS 并重启终端 |
+| `npm install` 失败 | 检查网络，复制完整报错 |
+| `npm run build` 失败 | 查看 TypeScript 错误输出 |
+| Stitch 脚本报错 | 确认 `.env` 含 `STITCH_API_KEY` |
+| 页面空白 | 使用 `npm run dev` 的 URL，勿直接打开 `index.html` |
+
+---
+
+## 产品需求
+
+Week1–2 需求基线：[docs/网站需求文档(Week1-2).md](docs/网站需求文档(Week1-2).md)
