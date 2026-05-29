@@ -164,4 +164,4 @@
 
 ## 文档延续说明（Week3 起）
 
-本文件覆盖 Week1–2 需求基线。**第三周及以后**在外观与体验上的迭代（含 Stitch 参考稿、首页与列表页统一、顶栏与导航补强等）记录在 `docs/week3/`，仓库总索引见 [`PROJECT_INDEX.md`](PROJECT_INDEX.md)。
+本文件覆盖 Week1–2 需求基线。**第三周及以后**在外观与体验上的迭代（含 Stitch 参考稿、首页与列表页统一、顶栏与导航补强等）以代码与 [`INDEX.md`](INDEX.md)、[`08-implementation-status.md`](08-implementation-status.md) 为准；历史周文档见 [`archive/`](archive/)。

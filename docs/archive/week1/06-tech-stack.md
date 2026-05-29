@@ -1,7 +1,9 @@
 # 技术栈与工程维护说明
 
+> **已归档**：当前规范见 [../../INDEX.md](../../INDEX.md)、[../../03-tech-stack.md](../../03-tech-stack.md)。
+
 面向：**仅前端**；后端接口后续接入。信息架构见 [01-page-inventory.md](01-page-inventory.md)，全站顶栏见 [02-page-content-structure.md](02-page-content-structure.md)。  
-**维护说明（重要）**：本文件最初创建于 Week1，当前已按 Week2 实际代码更新；若与其他周文档冲突，以 [../week2/08-implementation-status.md](../week2/08-implementation-status.md) 为准。**Week3 起**外观与顶栏/列表等迭代另见 [../week3/02-week3-implementation-notes.md](../week3/02-week3-implementation-notes.md) 与 [../PROJECT_INDEX.md](../PROJECT_INDEX.md)。
+**维护说明（重要）**：本文件最初创建于 Week1，当前已按 Week2 实际代码更新；若与其他周文档冲突，以 [../week2/08-implementation-status.md](../week2/08-implementation-status.md) 为准。**Week3 起**外观与顶栏/列表等迭代另见 [../week3/02-week3-implementation-notes.md](../week3/02-week3-implementation-notes.md) 与 [../../INDEX.md](../../INDEX.md)。
 
 ---
 
