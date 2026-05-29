@@ -1,0 +1,18 @@
+---
+description: Vitest and Testing Library rules
+globs: ["src/**/*.{test,spec}.{ts,tsx}", "src/**/*.{ts,tsx}"]
+alwaysApply: false
+---
+
+# Testing Rules
+
+- Use Vitest for tests.
+- Use Testing Library for React component behavior tests.
+- Test user-visible behavior, not implementation details.
+- Prefer `getByRole`, `getByLabelText`, and `getByText` when appropriate.
+- Mock external dependencies such as APIs, storage, timers, or network calls.
+- Do not mock internal logic unless there is a strong reason.
+- Cover valid inputs, invalid inputs, edge cases, and loading/error states.
+- Add or update tests for bug fixes and behavior changes.
+- Keep tests readable and grouped with `describe`.
+- Follow existing test file structure and naming patterns.
