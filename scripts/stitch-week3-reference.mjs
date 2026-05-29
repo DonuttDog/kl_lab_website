@@ -1,6 +1,6 @@
 /**
  * One-off: create a Stitch project (if needed), generate 3 desktop reference screens,
- * write a JSON summary under docs/week3/ (no secrets).
+ * write a JSON summary under docs/archive/week3/ (no secrets).
  *
  * Run from repo root (requires STITCH_API_KEY):
  *   node --env-file=.env scripts/stitch-week3-reference.mjs
@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 import { stitch } from '@google/stitch-sdk';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const outDir = join(__dirname, '..', 'docs', 'week3');
+const outDir = join(__dirname, '..', 'docs', 'archive', 'week3');
 const outFile = join(outDir, 'stitch-api-output.json');
 
 const PROMPTS = {
@@ -60,7 +60,7 @@ async function main() {
   if (!projectId) {
     await writeFile(outFile, JSON.stringify(payload ?? created, null, 2), 'utf8');
     throw new Error(
-      'Could not parse project id from create_project response. See docs/week3/stitch-api-output.json',
+      'Could not parse project id from create_project response. See docs/archive/week3/stitch-api-output.json',
     );
   }
 
