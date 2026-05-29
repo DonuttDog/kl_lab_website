@@ -11,7 +11,7 @@
 - Week2 主目标已完成：全站 UI/UX 统一改造 + 新增“我的”页面 + 测评作答页量表化 + 课程页搜索补齐。
 - 样式路线已落地为 Tailwind 渐进改造（保留少量全局基础样式）。
 - 当前仓库可正常 `npm run build`。
-- **Week3 已在后续迭代落地**（首页/两列表 Stitch 向改版、顶栏与列表第二轮对齐等），**不以本文件为 Week3 对照表**；请见 [../week3/02-week3-implementation-notes.md](../week3/02-week3-implementation-notes.md) 与 [../PROJECT_INDEX.md](../PROJECT_INDEX.md)。
+- **Week3 已在后续迭代落地**（首页/两列表 Stitch 向改版、顶栏与列表第二轮对齐等），**不以本文件为 Week3 对照表**；请见 [../week3/02-week3-implementation-notes.md](../week3/02-week3-implementation-notes.md) 与 [../../INDEX.md](../../INDEX.md)。
 
 ---
 

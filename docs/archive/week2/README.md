@@ -1,5 +1,7 @@
 # Week2：UI/UX 统一设计与实现（已落地）
 
+> **已归档**：当前实现状态见 [../../08-implementation-status.md](../../08-implementation-status.md)。
+
 ## 本周目标
 
 本周已完成「从文档到代码」的落地：在 Week1 基线之上完成全站视觉统一改造，新增“我的”页面，补齐登录/注册 mock 页面，并引入 Tailwind 方案。

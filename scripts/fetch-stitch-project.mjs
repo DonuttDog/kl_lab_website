@@ -27,7 +27,7 @@ async function main() {
     process.exit(1);
   }
 
-  const outDir = join(__dirname, '..', 'docs', 'week3', 'fetched');
+  const outDir = join(__dirname, '..', 'docs', 'stitch', 'fetched');
   await mkdir(outDir, { recursive: true });
 
   const project = stitch.project(projectId);
@@ -70,7 +70,7 @@ async function main() {
 
     summary.screens.push({
       screenId: sid,
-      htmlFile: `docs/week3/fetched/${fileName}`,
+      htmlFile: `docs/stitch/fetched/${fileName}`,
       htmlDownloadUrl: htmlUrl,
       byteLength: html.length,
       heuristicAssessmentList: isAssessmentList,

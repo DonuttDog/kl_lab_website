@@ -1,0 +1,18 @@
+---
+description: Core AI coding constraints for this project
+alwaysApply: true
+---
+
+# Core AI Coding Rules
+
+- Read relevant files before editing.
+- Make the smallest possible change.
+- Do not modify unrelated files.
+- Do not refactor unless explicitly requested.
+- Do not rewrite entire files for small changes.
+- Do not add new abstractions unless there is a concrete need.
+- Do not add new dependencies unless necessary and explain why.
+- Preserve existing comments, formatting, imports, and file structure unless the task requires changes.
+- Before implementing, inspect 3-5 relevant files and follow existing project patterns.
+- Prefer existing components, hooks, utilities, and types over creating new ones.
+- After changes, summarize changed files, behavior changes, and risks.

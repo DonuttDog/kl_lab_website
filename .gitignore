@@ -6,8 +6,9 @@ dist
 .DS_Store
 node_modules/.tmp
 
-# Local IDE / Cursor（不提交工作区配置）
-.cursor/
+# Local IDE / Cursor（不提交工作区配置；共享 AI 规则保留 .cursor/rules/）
+.cursor/*
+!.cursor/rules/
 
 # Stitch HTML 拉取（体积大、可本地再生）
-docs/week3/fetched/*.html
+docs/stitch/fetched/*.html

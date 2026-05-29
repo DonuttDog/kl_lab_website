@@ -1,0 +1,20 @@
+---
+description: React TypeScript Vite Tailwind frontend rules
+globs: ["src/**/*.{ts,tsx}"]
+alwaysApply: false
+---
+
+# React + TypeScript + Vite + Tailwind Rules
+
+- Use React function components and hooks.
+- Use TypeScript for all code.
+- Avoid `any`; use precise types or `unknown` when needed.
+- Keep props typed near the component.
+- Follow existing component structure and naming conventions.
+- Prefer named exports if the surrounding code uses them.
+- Use Tailwind classes consistently with existing UI patterns.
+- Do not introduce custom CSS unless existing patterns require it.
+- Keep JSX declarative and readable.
+- Avoid unnecessary hooks, context providers, or utility files.
+- Do not introduce TanStack Query, Zustand, Redux, or other state libraries unless the project already uses them.
+- Use Vite conventions already present in the project.

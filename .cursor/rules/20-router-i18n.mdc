@@ -1,0 +1,18 @@
+---
+description: React Router v7 and i18n rules
+globs: ["src/**/*.{ts,tsx}"]
+alwaysApply: false
+---
+
+# Routing and i18n Rules
+
+- Follow the existing React Router v7 pattern in this project.
+- Do not introduce loader/action/data-router patterns unless the project already uses them.
+- Keep route-level logic near existing route files.
+- Store shareable UI state in URL search params when appropriate.
+- Keep temporary UI state local to components.
+- Do not duplicate route-related fetching in multiple places.
+- Do not hardcode user-facing text when nearby code uses i18next.
+- Use existing `react-i18next` patterns.
+- Keep translation keys consistent with existing naming.
+- Use `Intl.DateTimeFormat` and `Intl.NumberFormat` for user-facing dates and numbers when relevant.

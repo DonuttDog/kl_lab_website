@@ -1,5 +1,7 @@
 # Week3 文档索引
 
+> **已归档**：Stitch 与实现说明见 [../../09-stitch-and-design-reference.md](../../09-stitch-and-design-reference.md)、[../../08-implementation-status.md](../../08-implementation-status.md)。
+
 ## 目标
 
 - 按 [网站需求文档](../网站需求文档(Week1-2).md) 中的**外观与体验**要求，在现有技术栈与 Week2 规范上，完成**首页、心理测评列表、课程列表**三页的第一版视觉统一升级。
