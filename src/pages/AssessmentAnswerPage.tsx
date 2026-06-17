@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AssessmentScale } from '../components/assessment/AssessmentScale';
-import { Button, Card } from '../components/ui';
+import { Button, Card, Modal } from '../components/ui';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useToast } from '../context/ToastContext';
 import { getAssessmentById } from '../mocks/assessments';
 
 const TOTAL_PLACEHOLDER = 12;
@@ -12,25 +13,28 @@ export function AssessmentAnswerPage() {
   const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
+  const { showToast } = useToast();
   const item = id ? getAssessmentById(id) : undefined;
   const [current, setCurrent] = useState(1);
   const [choice, setChoice] = useState<string>('A');
   const [scaleValue, setScaleValue] = useState<number | null>(null);
+  const [showExitModal, setShowExitModal] = useState(false);
 
   const titleText = item
     ? `${t(item.titleKey)} · ${t('page.assessmentAnswer.progress', { current, total: TOTAL_PLACEHOLDER })}`
     : t('page.assessmentDetail.notFoundTitle');
   useDocumentTitle(`${titleText} · ${t('app.documentTitleSuffix')}`);
 
-  const onExit = () => {
-    if (window.confirm(t('page.assessmentAnswer.exitConfirm'))) {
-      if (item) navigate(`/assessments/${item.id}`);
-      else navigate('/assessments');
-    }
+  const onExit = () => setShowExitModal(true);
+
+  const confirmExit = () => {
+    setShowExitModal(false);
+    if (item) navigate(`/assessments/${item.id}`);
+    else navigate('/assessments');
   };
 
   const onSubmit = () => {
-    window.alert(t('page.assessmentAnswer.submitToast'));
+    showToast(t('page.assessmentAnswer.submitToast'), 'success');
     navigate(item ? `/assessments/${item.id}` : '/assessments');
   };
 
@@ -129,6 +133,24 @@ export function AssessmentAnswerPage() {
           </Button>
         )}
       </div>
+
+      {/* 退出确认 Modal */}
+      <Modal
+        open={showExitModal}
+        onClose={() => setShowExitModal(false)}
+        title={t('page.assessmentAnswer.exitConfirmTitle')}
+        description={t('page.assessmentAnswer.exitConfirm')}
+        footer={
+          <>
+            <Button variant="secondary" onClick={() => setShowExitModal(false)}>
+              {t('common.cancel')}
+            </Button>
+            <Button variant="danger" onClick={confirmExit}>
+              {t('common.confirm')}
+            </Button>
+          </>
+        }
+      />
     </div>
   );
 }

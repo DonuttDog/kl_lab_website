@@ -52,7 +52,9 @@
     "audience": "适用人群",
     "audienceObject": "适用对象",
     "summary": "简介",
-    "cover": "封面"
+    "cover": "封面",
+    "confirm": "确认",
+    "cancel": "取消"
   },
   "page": {
     "home": {
@@ -178,6 +180,7 @@
     },
     "assessmentAnswer": {
       "exit": "退出",
+      "exitConfirmTitle": "确认退出",
       "exitConfirm": "确定退出？未提交进度将不保存（占位）。",
       "progress": "第 {{current}} / {{total}} 题",
       "questionPlaceholder": "题干占位（真实题目由后端或内容系统按语言返回，不进 UI 字典）。",
@@ -221,6 +224,13 @@
       "outlineItem3": "第三节：占位",
       "ctaLearn": "立即学习",
       "ctaToast": "学习入口占位（待产品与后端）。"
+    },
+    "notFound": {
+      "title": "页面未找到",
+      "heading": "页面不存在",
+      "description": "您访问的地址可能已失效、输入有误，或页面已被移动。",
+      "backHome": "返回首页",
+      "goAssessments": "浏览测评"
     }
   },
   "mock": {

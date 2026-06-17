@@ -3,11 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { PageBreadcrumb } from '../components/layout/PageBreadcrumb';
 import { Button, Card, EmptyState } from '../components/ui';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useToast } from '../context/ToastContext';
 import { getCourseById } from '../mocks/courses';
 
 export function CourseDetailPage() {
   const { t } = useTranslation();
   const { id } = useParams();
+  const { showToast } = useToast();
   const item = id ? getCourseById(id) : undefined;
 
   const titleText = item
@@ -62,7 +64,7 @@ export function CourseDetailPage() {
       </Card>
 
       <div className="mt-3 flex flex-wrap gap-2">
-        <Button variant="primary" onClick={() => window.alert(t('page.courseDetail.ctaToast'))}>
+        <Button variant="primary" onClick={() => showToast(t('page.courseDetail.ctaToast'), 'info')}>
           {t('page.courseDetail.ctaLearn')}
         </Button>
         <Link to="/courses">
