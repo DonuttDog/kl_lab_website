@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { buttonStyleClasses } from '../ui/Button';
 import { cn } from '../ui/utils';
+import { useToast } from '../../context/ToastContext';
 
 type DropdownId = 'assessments' | 'mall' | 'profile' | null;
 
@@ -21,6 +22,7 @@ function IconMenu({ open }: { open: boolean }) {
 export function SiteHeader() {
   const { t } = useTranslation();
   const { pathname } = useLocation();
+  const { showToast } = useToast();
   const assessmentsActive = pathname.startsWith('/assessments');
   const coursesActive = pathname.startsWith('/courses');
   const [open, setOpen] = useState<DropdownId>(null);
@@ -41,10 +43,12 @@ export function SiteHeader() {
     closeTimer.current = setTimeout(() => setOpen(null), 120);
   };
 
+  // Close mobile nav on route change
   useEffect(() => {
     setMobileNavOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when mobile nav open
   useEffect(() => {
     if (!mobileNavOpen) return;
     const prev = document.body.style.overflow;
@@ -100,6 +104,7 @@ export function SiteHeader() {
     setMobileNavOpen(false);
   };
 
+  // Profile dropdown / mobile menu items (shared between desktop dropdown and mobile panel)
   const profileMenu = (
     <ul className="py-1 text-sm text-text-secondary">
       <li>
@@ -112,7 +117,7 @@ export function SiteHeader() {
           type="button"
           className={`${mobileLinkClass} w-full`}
           onClick={() => {
-            window.alert(t('header.updateLogToast'));
+            showToast(t('header.updateLogToast'), 'info');
             closeAllMenus();
           }}
         >
@@ -141,7 +146,7 @@ export function SiteHeader() {
           type="button"
           className="block w-full rounded-md px-3 py-3 text-left text-sm text-danger transition hover:bg-rose-50"
           onClick={() => {
-            window.alert(t('header.logoutToast'));
+            showToast(t('header.logoutToast'), 'info');
             closeAllMenus();
           }}
         >
@@ -277,54 +282,7 @@ export function SiteHeader() {
             </button>
             {open === 'profile' ? (
               <div className="absolute right-0 top-full z-40 mt-2 w-56 overflow-hidden rounded-md border border-border bg-surface shadow-panel">
-                <ul className="py-2 text-sm text-text-secondary">
-                  <li>
-                    <Link className={linkClass} to="/profile" onClick={() => setOpen(null)}>
-                      {t('header.userCenter')}
-                    </Link>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      className={`${linkClass} w-full text-left`}
-                      onClick={() => {
-                        window.alert(t('header.updateLogToast'));
-                        setOpen(null);
-                      }}
-                    >
-                      {t('header.updateLog')}
-                    </button>
-                  </li>
-                  <li>
-                    <a className={linkClass} href="https://pixso.cn" target="_blank" rel="noreferrer">
-                      {t('header.visitWebsite')}
-                    </a>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      className={`${linkClass} w-full text-left`}
-                      onClick={() => {
-                        toggleTheme();
-                        setOpen(null);
-                      }}
-                    >
-                      {isDark ? t('header.switchLight') : t('header.switchDark')}
-                    </button>
-                  </li>
-                  <li className="mt-1 border-t border-border pt-1">
-                    <button
-                      type="button"
-                      className="block w-full rounded-md px-3 py-2 text-left text-sm text-danger transition hover:bg-rose-50"
-                      onClick={() => {
-                        window.alert(t('header.logoutToast'));
-                        setOpen(null);
-                      }}
-                    >
-                      {t('header.logout')}
-                    </button>
-                  </li>
-                </ul>
+                {profileMenu}
               </div>
             ) : null}
           </div>
