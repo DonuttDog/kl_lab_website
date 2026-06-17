@@ -3,10 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button, Card, Input } from '../components/ui';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useToast } from '../context/ToastContext';
 
 export function LoginPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { showToast } = useToast();
   const title = `${t('page.auth.loginTitle')} · ${t('app.documentTitleSuffix')}`;
   useDocumentTitle(title);
 
@@ -16,10 +18,10 @@ export function LoginPage() {
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
     if (!account.trim() || !password.trim()) {
-      window.alert(t('page.auth.fillRequiredToast'));
+      showToast(t('page.auth.fillRequiredToast'), 'warning');
       return;
     }
-    window.alert(t('page.auth.loginSuccessToast'));
+    showToast(t('page.auth.loginSuccessToast'), 'success');
     navigate('/profile');
   };
 

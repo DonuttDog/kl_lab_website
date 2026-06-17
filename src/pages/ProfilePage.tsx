@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, Card, Toast } from '../components/ui';
+import { Button, Card, Modal } from '../components/ui';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useToast } from '../context/ToastContext';
 
 type ProfileTab = 'settings' | 'wallet' | 'orders';
 
@@ -25,18 +26,14 @@ const INITIAL_PROFILE: MockProfile = {
 
 export function ProfilePage() {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const title = `${t('page.profile.title')} · ${t('app.documentTitleSuffix')}`;
   useDocumentTitle(title);
 
   const [activeTab, setActiveTab] = useState<ProfileTab>('settings');
   const [profile, setProfile] = useState(INITIAL_PROFILE);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!toastMessage) return;
-    const timer = setTimeout(() => setToastMessage(null), 2200);
-    return () => clearTimeout(timer);
-  }, [toastMessage]);
+  const [editField, setEditField] = useState<'name' | 'phone' | null>(null);
+  const [editValue, setEditValue] = useState('');
 
   const wechatText = useMemo(
     () => (profile.wechatBound ? t('page.profile.bound') : t('page.profile.unbound')),
@@ -57,17 +54,20 @@ export function ProfilePage() {
     } catch {
       // Keep mock flow resilient in non-secure contexts.
     }
-    setToastMessage(t('page.profile.toastCopied'));
+    showToast(t('page.profile.toastCopied'), 'info');
   };
 
   const updateField = (field: 'name' | 'phone') => {
-    const next = window.prompt(
-      field === 'name' ? t('page.profile.promptName') : t('page.profile.promptPhone'),
-      profile[field],
-    );
-    if (!next?.trim()) return;
-    setProfile((prev) => ({ ...prev, [field]: next.trim() }));
-    setToastMessage(t('page.profile.toastSaved'));
+    setEditField(field);
+    setEditValue(profile[field]);
+  };
+
+  const confirmEdit = () => {
+    if (!editValue.trim() || !editField) return;
+    setProfile((prev) => ({ ...prev, [editField]: editValue.trim() }));
+    showToast(t('page.profile.toastSaved'), 'success');
+    setEditField(null);
+    setEditValue('');
   };
 
   return (
@@ -76,8 +76,6 @@ export function ProfilePage() {
         <h1 className="text-3xl font-bold text-text-primary">{t('page.profile.title')}</h1>
         <p className="mt-2 text-sm text-text-muted">{t('page.profile.mockHint')}</p>
       </div>
-
-      {toastMessage ? <Toast message={toastMessage} variant="info" /> : null}
 
       <div className="grid gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
         <Card className="h-fit p-2">
@@ -202,6 +200,32 @@ export function ProfilePage() {
           )}
         </Card>
       </div>
+
+      {/* 编辑姓名/手机 Modal */}
+      <Modal
+        open={editField !== null}
+        onClose={() => { setEditField(null); setEditValue(''); }}
+        title={editField === 'name' ? t('page.profile.promptName') : t('page.profile.promptPhone')}
+        footer={
+          <>
+            <Button variant="secondary" onClick={() => { setEditField(null); setEditValue(''); }}>
+              {t('common.cancel')}
+            </Button>
+            <Button variant="primary" onClick={confirmEdit} disabled={!editValue.trim()}>
+              {t('common.confirm')}
+            </Button>
+          </>
+        }
+      >
+        <input
+          type="text"
+          value={editValue}
+          onChange={(e) => setEditValue(e.target.value)}
+          onKeyDown={(e) => { if (e.key === 'Enter') confirmEdit(); }}
+          className="h-10 w-full rounded-md border border-border bg-surface px-3 text-sm text-text-primary outline-none transition focus-visible:ring-2 focus-visible:ring-brand"
+          autoFocus
+        />
+      </Modal>
     </div>
   );
 }

@@ -52,6 +52,9 @@
 | 测试 | [04-routes-and-pages.md](04-routes-and-pages.md#测试)（见 02 的 `npm run test`） |
 | Stitch 拉取摘要 | [docs/stitch/fetched/stitch-fetch-summary.json](stitch/fetched/stitch-fetch-summary.json)（运行 `npm run stitch:fetch` 后生成） |
 | 环境变量示例 | [.env.example](../.env.example) |
+| Toast / Modal / Dialog | [05-ui-and-components.md](05-ui-and-components.md) |
+| 全局通知 (useToast) | [src/context/ToastContext.tsx](../src/context/ToastContext.tsx) |
+| 404 页面 | [src/pages/NotFoundPage.tsx](../src/pages/NotFoundPage.tsx) |
 
 ---
 
@@ -80,11 +83,13 @@
     ├── app/router.tsx
     ├── i18n/index.ts
     ├── locales/zh-CN.json
+    ├── context/ToastContext.tsx
+    ├── lib/utils.ts
     ├── layouts/MainLayout.tsx
     ├── components/layout/
-    ├── components/ui/
+    ├── components/ui/            # Dialog, Modal, Toast, ErrorAlert, Button, Card 等
     ├── components/assessment/
-    ├── pages/
+    ├── pages/                   # NotFoundPage 等
     ├── mocks/
     ├── hooks/useDocumentTitle.ts
     └── test/setup.ts

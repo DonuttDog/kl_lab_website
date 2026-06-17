@@ -46,7 +46,10 @@
 | `variant` | `'primary' \| 'secondary' \| 'danger' \| 'ghost' \| 'gradient'` | `'secondary'` |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |
 | `fullWidth` | `boolean` | — |
+| `loading` | `boolean` | — |
 | 其余 | `ButtonHTMLAttributes` | `type` 默认 `'button'` |
+
+`loading`: 为 `true` 时按钮 disabled 并显示 `Loader2` 旋转动画（`lucide-react`）。
 
 `buttonStyleClasses(variant?, size?, className?)`：供 `Link` 使用，避免 `<a><button>` 嵌套。
 
@@ -71,23 +74,64 @@
 
 | Prop | 类型 | 说明 |
 |------|------|------|
-| `icon` | `'users' \| 'clock'` | 内联 SVG |
+| `icon` | `ReactNode` | 内联图标（`lucide-react`） |
 | `children` | `ReactNode` | 元信息文案 |
 
-导出 `IconUsers`、`IconClock` 供自定义场景。
+导出 `IconUsers`、`IconClock`（`lucide-react` 封装）供自定义场景。
 
-### `Toast`
+### `ToastContainer` / `ToastProvider` / `useToast`
 
-| Prop | 类型 | 默认 |
+全局 Toast 通知系统（`src/context/ToastContext.tsx` + `src/components/ui/Toast.tsx`）：
+
+| API | 说明 |
+|-----|------|
+| `ToastProvider` | Context Provider，挂载在 `App.tsx` 中，通过 `createPortal` 将 Toast 渲染到 `document.body` |
+| `useToast()` | Hook，返回 `{ showToast(message, type?) }` |
+| `showToast(message, type?)` | 触发通知。`type`: `'success' \| 'error' \| 'info' \| 'warning'`（默认 `'info'`）。显示 3s 后自行消失 |
+| `ToastContainer` | 纯展示组件，不直接使用 |
+
+**特性**：
+- 固定右上角（`fixed right-4 top-4 z-50`），多 Toast 堆叠
+- 进入动画：opacity + translateX 过渡 300ms
+- 退出动画：opacity + translateX + scale 过渡 250ms
+- 手动关闭：点击 ✕ 立即触发退出动画
+- 图标：`lucide-react`（CheckCircle / AlertCircle / Info）
+- 颜色：success=emerald, error=red, info=sky, warning=amber
+
+### `Modal`
+
+Radix UI Dialog 薄封装（`src/components/ui/Modal.tsx`）：
+
+| Prop | 类型 | 说明 |
 |------|------|------|
-| `message` | `string` | |
-| `variant` | `'success' \| 'info' \| 'warning' \| 'error'` | `'info'` |
+| `open` | `boolean` | 控制显示/隐藏 |
+| `onClose` | `() => void` | 关闭回调 |
+| `title?` | `string` | 标题（DialogTitle） |
+| `description?` | `string` | 描述文案（DialogDescription） |
+| `children?` | `ReactNode` | 正文区域 |
+| `footer?` | `ReactNode` | 底栏（通常放确认/取消按钮） |
 
-`role="status"`，无自动关闭逻辑（由页面 `useEffect` 控制，如 Profile）。
+**底层**：`Dialog` 组件（`src/components/ui/Dialog.tsx`）封装 Radix UI `DialogPrimitive`，提供：
+- `DialogContent`, `DialogHeader`, `DialogFooter`, `DialogTitle`, `DialogDescription`
+- Portal 渲染、焦点捕捉、Esc 关闭、ARIA 标注
+- Header 带 `border-b` 分隔线、Footer 带 `border-t` + `bg-surfaceMuted/50` 底色
+- 打开/关闭 `data-[state]` 动画（scale + opacity）
+
+### `ErrorAlert`
+
+内联错误横幅（`src/components/ui/ErrorAlert.tsx`）：
+
+| Prop | 类型 | 说明 |
+|------|------|------|
+| `message` | `string` | 错误消息 |
+| `onDismiss?` | `() => void` | 关闭回调（出现 ✕ 按钮） |
+| `className?` | `string` | 额外 class |
+
+`role="alert"`，红色主题，`lucide-react` AlertCircle 图标。用于表单内联错误，替代弹窗。
 
 ### `cn`（`utils.ts`）
 
-合并 className 字符串。
+合并 className 字符串，底层为 `clsx` + `tailwind-merge`（智能处理 Tailwind class 冲突），定义在 `src/lib/utils.ts`，由 `src/components/ui/utils.ts` 转发。
 
 ## 测评组件
 

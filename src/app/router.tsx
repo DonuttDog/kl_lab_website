@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import { MainLayout } from '../layouts/MainLayout';
 import { AssessmentAnswerPage } from '../pages/AssessmentAnswerPage';
 import { AssessmentDetailPage } from '../pages/AssessmentDetailPage';
@@ -7,6 +7,7 @@ import { CourseDetailPage } from '../pages/CourseDetailPage';
 import { CourseListPage } from '../pages/CourseListPage';
 import { HomePage } from '../pages/HomePage';
 import { LoginPage } from '../pages/LoginPage';
+import { NotFoundPage } from '../pages/NotFoundPage';
 import { ProfilePage } from '../pages/ProfilePage';
 import { RegisterPage } from '../pages/RegisterPage';
 
@@ -31,6 +32,6 @@ export const router = createBrowserRouter([
   },
   {
     path: '*',
-    element: <Navigate to="/" replace />,
+    element: <NotFoundPage />,
   },
 ]);
