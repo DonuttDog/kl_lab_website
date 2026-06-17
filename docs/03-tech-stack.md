@@ -9,6 +9,9 @@
 | `react` / `react-dom` ^18.3 | UI |
 | `react-router-dom` ^7.6 | 客户端路由（`createBrowserRouter`） |
 | `i18next` + `react-i18next` | 文案国际化（当前仅 `zh-CN`） |
+| `radix-ui` ^1.6 | Dialog 等无障碍 UI 原语（供 Modal 组件） |
+| `clsx` ^2.1 + `tailwind-merge` ^3.6 | 智能 Tailwind class 合并（`cn()`） |
+| `lucide-react` ^1.20 | 统一图标库（Toast、Modal、Button 等） |
 
 ## 开发与构建
 
@@ -38,7 +41,7 @@
 ## 入口与路由
 
 - 入口：[src/main.tsx](../src/main.tsx) → 加载 `i18n`、`index.css`、`App`
-- 路由：[src/App.tsx](../src/App.tsx) → `RouterProvider` + [src/app/router.tsx](../src/app/router.tsx)
+- 路由：[src/App.tsx](../src/App.tsx) → `ToastProvider` > `RouterProvider` + [src/app/router.tsx](../src/app/router.tsx)
 
 ## 可选 / 仅脚本使用
 
@@ -64,4 +67,3 @@ test: {
 
 - ESLint / Prettier 配置目录
 - `@tanstack/react-query`、`react-hook-form`、`zod`
-- Radix / Headless UI（顶栏下拉为自实现，见 [05-ui-and-components.md](05-ui-and-components.md)）

@@ -15,7 +15,7 @@
 | `/login` | `MainLayout` | `LoginPage` | Mock 登录 |
 | `/register` | `MainLayout` | `RegisterPage` | Mock 注册 |
 | `/profile` | `MainLayout` | `ProfilePage` | 用户中心（Mock 资料） |
-| `*` | — | `Navigate` → `/` | 未知路径回首页 |
+| `*` | — | `NotFoundPage` | 404 品牌页面（渐变 404 + 返回/浏览入口） |
 
 `MainLayout`：[src/layouts/MainLayout.tsx](../src/layouts/MainLayout.tsx) — `SiteHeader` + `Outlet`（`max-w-content`）+ `SiteFooter`。
 
@@ -46,7 +46,8 @@
 
 - 独立布局，自带顶栏区（退出、进度文案）
 - 占位总题数 `TOTAL_PLACEHOLDER = 12`；题型含单选与 `AssessmentScale`（示例 7 分，`scaleCount` 由页面传入）
-- 退出：`window.confirm`；提交：`window.alert` 后回详情或列表
+- 退出：Modal 确认弹窗（品牌样式，danger 确认按钮） — 见 [05-ui-and-components.md](05-ui-and-components.md#modal)
+- 提交：Toast 通知后回详情或列表
 - 无效 id：未找到 UI + 回列表按钮
 
 ### 课程列表 `CourseListPage`
@@ -59,16 +60,18 @@
 
 - 面包屑：首页 / 课程列表 / 标题
 - Mock 正文来自 locale key
+- 「立即学习」按钮：Toast info 通知（占位）
 
 ### 登录 `LoginPage` / 注册 `RegisterPage`
 
-- Mock：必填校验 → `window.alert` → 登录成功跳转 `/profile`；注册流程为占位（见源码）
+- Mock：必填校验 → Toast warning 通知 → 登录成功跳转 `/profile`（Toast success）；注册成功后跳转 `/login`
 - 文案含 mock 提示（`page.auth.mockHint`）
 
 ### 用户中心 `ProfilePage`
 
 - 本地 state 模拟资料（`INITIAL_PROFILE`），非后端拉取
-- Tab：`settings` | `wallet` | `orders`；操作通过 `Toast` 组件反馈（约 2.2s 自动消失）
+- Tab：`settings` | `wallet` | `orders`；操作通过全局 `useToast()` 反馈
+- 编辑姓名/手机：Modal 输入框（品牌样式，支持 Enter 提交） — 见 [05-ui-and-components.md](05-ui-and-components.md#modal)
 - 深色模式开关等交互为前端占位
 
 ## 顶栏导航（跨页）
